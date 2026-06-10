@@ -83,12 +83,26 @@ function App() {
       case 'power':
         return (
           <div className="app-main-content">
-            <section className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 03 / Influence</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Power & Governance</h2>
-              <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-                Looks at how authority is divided between safety researchers, who hold final launch veto power, and commercial managers responding to investor demands and competitors.
-              </p>
+            <section className="flex flex-col gap-4">
+              <div>
+                <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 03 / Influence</span>
+                <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Power & Governance</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-stone-900/40 border border-stone-850 p-5 rounded-2xl">
+                <div>
+                  <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider mb-2">Structural Governance & Legal Shield</h3>
+                  <p className="text-stone-400 text-xs sm:text-sm leading-relaxed mb-0">
+                    Anthropic leverages a Delaware <strong>Public Benefit Corporation (PBC)</strong> charter alongside an independent <strong>Long-Term Benefit Trust (LTBT)</strong>. Standard corporate law mandates maximizing stockholder value. Anthropic's board must balance this with the public benefit purpose: <em>"responsible development of advanced AI."</em> This tripartite fiduciary duty shields safety-first delay decisions from shareholder lawsuits.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider mb-2">The Capital-Compute Trap Tension</h3>
+                  <p className="text-stone-400 text-xs sm:text-sm leading-relaxed mb-0">
+                    While safety researchers hold formal veto power, Anthropic's compute dependence on Amazon and Google creates a <strong>$100B+ compute liability</strong>. This "compute mortgage" forces commercialization sprints, creating a rift between newly hired enterprise product managers and safety purists. This tension led to RSP v3.0+ removing unilateral "hard pause" commitments to prevent market obsolescence.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section className="flex flex-col gap-4">
@@ -112,12 +126,26 @@ function App() {
       case 'social':
         return (
           <div className="app-main-content">
-            <section className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 04 / Connection</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Social & Rituals</h2>
-              <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-                Studies the greenhouse-like plant office spaces, high-trust team communication scripts, and experimental internal sandboxes that forge a collaborative startup family bond.
-              </p>
+            <section className="flex flex-col gap-4">
+              <div>
+                <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 04 / Connection</span>
+                <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Social & Rituals</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-stone-900/40 border border-stone-850 p-5 rounded-2xl">
+                <div>
+                  <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider mb-2">Biophilic Workspace & Scholar Branding</h3>
+                  <p className="text-stone-400 text-xs sm:text-sm leading-relaxed mb-0">
+                    Daily rituals are grounded in a scholarly, "anti-hype" aesthetic. Under design lead Jenny Wen, Claude.ai is styled with a bookish serif layout and paper-like clay background. This digital aesthetic is reflected physically in the plant-heavy, library-like SF Howard Street campus, encouraging a deliberative, low-ego research guild vibe.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-sm font-mono text-amber-400 uppercase tracking-wider mb-2">The "Existential Urgency" Burnout Loop</h3>
+                  <p className="text-stone-400 text-xs sm:text-sm leading-relaxed mb-0">
+                    Anthropic plots in the Communal quadrant (high sociability + high solidarity). While this creates a warm, high-trust "startup family" bond, it breeds boundary collapse. Employees rationalize working late-night shifts and weekends because they believe they are holding the line for AGI alignment, turning the safety mission into a moral burnout trap.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section className="flex flex-col gap-4">
