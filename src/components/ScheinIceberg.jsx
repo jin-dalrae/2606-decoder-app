@@ -15,7 +15,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       zOffsetNormal: 'translate3d(0, -35px, 60px)',
       zOffsetHover: 'translate3d(0, -35px, 95px)',
       zIndex: 30,
-      glowColor: 'rgba(20, 87, 204, 0.35)'
+      glowColor: 'rgba(20, 87, 204, 0.35)',
+      synthesis: 'Visible physical & digital outputs designed to project a grounded, academic, and low-ego research guild identity.',
+      criticalAnalysis: 'The biophilic "greenhouse" offices, serif-based Lora typography, and sandbox playgrounds (Project Vend/Deal) serve to subvert public fear of rogue AI and frame Claude as a literary assistant. However, this natural, slow-paced aesthetic stands in constant tension with the frantic compute pre-training cycles, on-call schedules, and the commercial pressure of keeping pace with OpenAI.'
     },
     espoused: {
       id: 'espoused',
@@ -27,7 +29,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       zOffsetNormal: 'translate3d(0, 0px, 0px)',
       zOffsetHover: 'translate3d(0, 0px, 35px)',
       zIndex: 20,
-      glowColor: 'rgba(93, 93, 93, 0.3)'
+      glowColor: 'rgba(93, 93, 93, 0.3)',
+      synthesis: 'Officially declared corporate principles and scaling guidelines that establish Anthropic\'s safety-first mission.',
+      criticalAnalysis: 'Verbatim values like "Act for global good" and the "Responsible Scaling Policy (RSP)" provide a legal and ethical shield for leadership. However, their execution frequently clashes with business goals, leading to High Refusal Rates that frustrate users, copyright friction (Project Panama), and the dilution of the RSP in version 3.0+ to prioritize competitive market survival over unilateral pause agreements.'
     },
     tacit: {
       id: 'tacit',
@@ -39,7 +43,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       zOffsetNormal: 'translate3d(0, 35px, -60px)',
       zOffsetHover: 'translate3d(0, 35px, -25px)',
       zIndex: 10,
-      glowColor: 'rgba(8, 25, 92, 0.35)'
+      glowColor: 'rgba(8, 25, 92, 0.35)',
+      synthesis: 'Taken-for-granted, unconscious beliefs that drive the day-to-day decisions and operational behavior of the lab.',
+      criticalAnalysis: 'The belief that "safety is an empirical science" justifies massive investments in mechanistic interpretability and Constitutional AI. Yet, there is a powerful shared assumption that "extreme hours are the price of existential alignment"—treating the safety race as a moral sprint where setting WLB boundaries is seen as a lack of commitment. This communal alignment feeds a silent burnout cycle masked by the friendly, low-ego workplace culture.'
     }
   };
 
@@ -221,20 +227,37 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       </div>
 
       {/* Details Panel: Selected Layer Cards & Tensions */}
-      <div className="flex-[1.2] flex flex-col justify-between">
+      <div className="flex-[1.2] flex flex-col justify-between gap-5">
         
         {/* Layer Definition Banner */}
-        <div className="mb-6">
+        <div>
           <div className="flex items-center gap-3 mb-2">
             <span className="w-3.5 h-3.5 rounded-full" style={{ backgroundColor: activeDef.color }} />
             <h2 className="text-xl sm:text-2xl font-bold m-0">{activeDef.title}</h2>
           </div>
-          <span className="text-xs font-mono text-amber-500 uppercase tracking-wider block mb-2">
+          <span className="text-xs font-mono text-[#1457CC] uppercase tracking-wider block mb-2">
             {activeDef.depth}
           </span>
-          <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0 border-l-2 border-stone-800 pl-3">
+          <p className="text-stone-500 text-xs sm:text-sm leading-relaxed m-0 border-l-2 border-stone-300 pl-3">
             {activeDef.definition}
           </p>
+        </div>
+
+        {/* Level Synthesis & Critical Analysis Panel */}
+        <div className="bg-[#FBFAF7] border border-[#1457CC]/20 rounded-2xl p-4 shadow-sm flex flex-col gap-3">
+          <span className="text-[10px] font-mono text-[#1457CC] uppercase tracking-widest block font-semibold">
+            Level Synthesis & Critical Analysis
+          </span>
+          <div className="space-y-3">
+            <div>
+              <span className="text-[10px] font-mono text-stone-500 uppercase block mb-1">Cultural Synthesis:</span>
+              <p className="text-stone-800 text-xs sm:text-sm leading-relaxed m-0 font-semibold">{activeDef.synthesis}</p>
+            </div>
+            <div>
+              <span className="text-[10px] font-mono text-stone-500 uppercase block mb-1">Critical Analysis & Alignment:</span>
+              <p className="text-stone-700 text-xs sm:text-sm leading-relaxed m-0">{activeDef.criticalAnalysis}</p>
+            </div>
+          </div>
         </div>
 
         {/* Dynamic Cards Container */}
@@ -243,7 +266,7 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
             Observed Cultural Entities ({activeItems.length})
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2 custom-scroll">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[220px] overflow-y-auto pr-2 custom-scroll">
             {activeItems.map((item, idx) => {
               const name = item.name || item.value || item.assumption;
               const details = item.description;
@@ -256,7 +279,7 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
                   className="bg-black/35 border border-stone-850 hover:border-stone-800 rounded-xl p-3.5 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    <h4 className="text-xs font-mono text-amber-400 tracking-wide uppercase mb-1.5">{name}</h4>
+                    <h4 className="text-xs font-mono text-[#1457CC] tracking-wide uppercase mb-1.5">{name}</h4>
                     <p className="text-stone-300 text-xs leading-relaxed mb-3">{details}</p>
                   </div>
                   {extraValue && (
@@ -273,7 +296,7 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
 
         {/* Tension Mode Section (Tension Spotlight) */}
         {tensionMode && (
-          <div className="mt-6 pt-5 border-t border-red-900/30">
+          <div className="mt-4 pt-4 border-t border-red-900/30">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
               <h3 className="text-xs font-mono text-red-500 uppercase tracking-wider m-0">
@@ -281,7 +304,7 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
               </h3>
             </div>
             
-            <div className="flex flex-col gap-3 max-h-[200px] overflow-y-auto pr-2 custom-scroll">
+            <div className="flex flex-col gap-3 max-h-[150px] overflow-y-auto pr-2 custom-scroll">
               {activeTensions.map((tension, idx) => (
                 <div 
                   key={idx} 
