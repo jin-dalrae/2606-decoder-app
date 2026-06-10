@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cultureData from '../data/cultureData.json';
 
-export default function ScheinIceberg({ tensionMode }) {
+export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
   const [selectedLayer, setSelectedLayer] = useState('artifacts'); // Default to artifacts
 
   const layerDefinitions = {
@@ -40,8 +40,57 @@ export default function ScheinIceberg({ tensionMode }) {
     }
   };
 
+  const pillarMapping = {
+    selection: {
+      artifacts: ["SF Head Office & Hybrid/In-Office Model", "Top-Tier Silicon Valley Compensation"],
+      espousedValues: ["Act for global good", "Ignite race to safety", "Put mission first"],
+      tacitAssumptions: ["Talent density beats process", "Safety is a science"],
+      tensions: ["Helpful Honest Harmless vs. Extreme pressure & long hours due to capability race"]
+    },
+    progression: {
+      artifacts: ["Top-Tier Silicon Valley Compensation"],
+      espousedValues: ["Simple thing that works", "Helpful honest harmless", "Put mission first"],
+      tacitAssumptions: ["Extreme hours/burnout as the price of alignment"],
+      tensions: ["Helpful Honest Harmless vs. Extreme pressure & long hours due to capability race"]
+    },
+    power: {
+      artifacts: ["SF Head Office & Hybrid/In-Office Model", "Project Deal (Internal AI Marketplace)"],
+      espousedValues: ["Act for global good", "Hold light and shade", "Ignite race to safety"],
+      tacitAssumptions: ["Safety is a science", "Move fast but safely"],
+      tensions: [
+        "Ignite race to safety vs. Commercializing models rapidly to compete with OpenAI",
+        "Be good to users vs. High Refusal Rates and Safety Censorship",
+        "Simple thing that works vs. Scaling Infrastructure Complexity"
+      ]
+    },
+    social: {
+      artifacts: ["Claude.ai UI & Artifacts Feature", "Project Vend (AI Office Shop)", "Office Greenery (Plants)"],
+      espousedValues: ["Be good to our users", "Helpful honest harmless"],
+      tacitAssumptions: ["Talent density beats process"],
+      tensions: [
+        "Simple thing that works vs. Scaling Infrastructure Complexity",
+        "Be good to users vs. High Refusal Rates and Safety Censorship",
+        "Helpful Honest Harmless vs. Extreme pressure & long hours due to capability race"
+      ]
+    }
+  };
+
   const activeDef = layerDefinitions[selectedLayer];
-  const activeItems = cultureData.iceberg[activeDef.dbKey];
+  let activeItems = cultureData.iceberg[activeDef.dbKey];
+
+  if (pillar !== 'all' && pillarMapping[pillar]) {
+    const allowedNames = pillarMapping[pillar][activeDef.dbKey];
+    activeItems = activeItems.filter(item => {
+      const name = item.name || item.value || item.assumption;
+      return allowedNames.includes(name);
+    });
+  }
+
+  let activeTensions = cultureData.iceberg.tensions;
+  if (pillar !== 'all' && pillarMapping[pillar]) {
+    const allowedTensions = pillarMapping[pillar].tensions;
+    activeTensions = activeTensions.filter(tension => allowedTensions.includes(tension.title));
+  }
 
   return (
     <div className={`glass-panel w-full flex flex-col xl:flex-row gap-8 min-h-[550px] transition-all duration-500 ${
@@ -209,7 +258,7 @@ export default function ScheinIceberg({ tensionMode }) {
             </div>
             
             <div className="flex flex-col gap-3 max-h-[200px] overflow-y-auto pr-2 custom-scroll">
-              {cultureData.iceberg.tensions.map((tension, idx) => (
+              {activeTensions.map((tension, idx) => (
                 <div 
                   key={idx} 
                   className="bg-red-950/10 border border-red-900/30 rounded-xl p-3 text-xs"

@@ -1,8 +1,21 @@
 import React, { useState, useMemo } from 'react';
 import cultureData from '../data/cultureData.json';
 
-export default function EvidenceHub({ tensionMode }) {
-  const feed = cultureData.evidenceFeed;
+export default function EvidenceHub({ tensionMode, pillar = 'all' }) {
+  const feedPillarMapping = {
+    selection: ['feed-03', 'feed-09', 'feed-14'],
+    progression: ['feed-03', 'feed-05', 'feed-13'],
+    power: ['feed-02', 'feed-07', 'feed-09', 'feed-10', 'feed-11', 'feed-15', 'feed-16'],
+    social: ['feed-01', 'feed-04', 'feed-06', 'feed-08', 'feed-12', 'feed-13', 'feed-15']
+  };
+
+  const feed = useMemo(() => {
+    const allFeed = cultureData.evidenceFeed;
+    if (pillar !== 'all' && feedPillarMapping[pillar]) {
+      return allFeed.filter(item => feedPillarMapping[pillar].includes(item.id));
+    }
+    return allFeed;
+  }, [pillar]);
 
   // State filters
   const [searchQuery, setSearchQuery] = useState('');
