@@ -44,25 +44,25 @@ const GOVERNANCE_NODES = {
   trust: {
     title: 'Long-Term Benefit Trust (LTBT)',
     role: 'Legal Check on Management & Board Sourcing',
-    color: '#1457CC',
+    color: 'var(--brand-primary)',
     body: 'A Delaware purpose trust holding all Class T Common Stock (voting rights, no dividends). As of early 2026, its power phase-in reached a majority (3 out of 5 seats) on Anthropic\'s Board. Trustees are financially disinterested (no equity) with staggered terms. Current trustees include Neil Buddy Shah (Chair), Richard Fontaine (CNAS CEO), and Mariano-Florentino Cuéllar (Carnegie Endowment President).',
   },
   board: {
     title: 'Board of Directors',
     role: 'Tripartite Fiduciary Balance',
-    color: '#7C3AED',
+    color: 'var(--brand-primary-dark)',
     body: 'Responsible for overseeing corporate affairs. Legally mandated under the Delaware Public Benefit Corporation (PBC) charter to balance shareholder wealth with public benefit (the safety mission) and user interests. This charter protects the board from investor lawsuits when they choose to delay capability releases or pause pre-training for safety reasons.',
   },
   shareholders: {
     title: 'Shareholders & Cloud Partners',
     role: 'Capital Investment & Override Failsafe',
-    color: '#5B5BD6',
+    color: 'var(--brand-primary)',
     body: 'Venture investors (Series A-D, including Google\'s $2B and Amazon\'s $4B) hold equity. Stockholders can override or terminate the LTBT\'s voting power with a 75% Board vote + 75% outstanding Voting Common Stock. However, cloud partner shares are non-voting preferred, preventing Google or Amazon from unilaterally dismantling the trust.',
   },
   veto: {
     title: 'Safety Veto Pipeline (RSO & CEO)',
     role: 'Responsible Scaling Policy (RSP) Control',
-    color: '#B93815',
+    color: 'var(--accent-orange)',
     body: 'When models meet ASL-3 capability thresholds (CBRN weapons uplift, autonomous cyber exploit, internet replication), a veto workflow is triggered. ML safety researchers report capability uplifts to the Responsible Scaling Officer (RSO, Jared Kaplan) who drafts a Risk Report. The RSO and CEO hold joint authority to veto the release or approve it with hardware mitigations, notifying the Board & LTBT.',
   },
 };
@@ -83,61 +83,61 @@ function GovernanceFlowDiagram() {
 
       <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', alignItems: 'center' }}>
         {/* SVG Flow diagram */}
-        <div style={{ flexShrink: 0, background: 'rgba(0,0,0,0.2)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-default)' }}>
+        <div style={{ flexShrink: 0, background: 'var(--bg-muted)', padding: '16px', borderRadius: 'var(--r-md)', border: '1px solid var(--border-default)' }}>
           <svg width="320" height="280" viewBox="0 0 320 280" style={{ overflow: 'visible' }}>
             {/* Connecting Arrows & Lines */}
             {/* LTBT to Board */}
-            <path d="M 230 60 L 160 120" stroke="var(--border-default)" strokeWidth="1.5" strokeDasharray="3,3" fill="none" />
-            <text x="175" y="80" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }} transform="rotate(-40, 175, 80)">Electorate (Class T)</text>
+            <path d="M 230 60 L 160 120" stroke="var(--border-light)" strokeWidth="1.5" strokeDasharray="3,3" fill="none" />
+            <text x="175" y="80" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }} transform="rotate(-40, 175, 80)">Electorate (Class T)</text>
             
             {/* Shareholders to Board */}
-            <path d="M 90 60 L 160 120" stroke="var(--border-default)" strokeWidth="1.5" fill="none" />
-            <text x="95" y="95" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }} transform="rotate(40, 95, 95)">75% Override Loop</text>
+            <path d="M 90 60 L 160 120" stroke="var(--border-light)" strokeWidth="1.5" fill="none" />
+            <text x="95" y="95" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }} transform="rotate(40, 95, 95)">75% Override Loop</text>
             
             {/* Board to Veto */}
-            <path d="M 160 120 L 160 210" stroke="#7C3AED" strokeWidth="2" fill="none" />
-            <polygon points="160,215 156,207 164,207" fill="#7C3AED" />
-            <text x="165" y="165" style={{ fontSize: '7.5px', fill: '#7C3AED', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>RSP Mandate</text>
+            <path d="M 160 120 L 160 210" stroke="var(--brand-primary-dark)" strokeWidth="2" fill="none" />
+            <polygon points="160,215 156,207 164,207" fill="var(--brand-primary-dark)" />
+            <text x="165" y="165" style={{ fontSize: '7.5px', fill: 'var(--brand-primary-dark)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>RSP Mandate</text>
             
             {/* Veto back to Board/LTBT (Report loop) */}
-            <path d="M 230 220 C 290 220, 290 100, 230 60" stroke="#B93815" strokeWidth="1" strokeDasharray="3,3" fill="none" />
-            <text x="280" y="140" style={{ fontSize: '7px', fill: '#B93815', fontFamily: 'var(--font-mono)' }}>Escalation & Veto Log</text>
+            <path d="M 230 220 C 290 220, 290 100, 230 60" stroke="var(--accent-orange)" strokeWidth="1" strokeDasharray="3,3" fill="none" />
+            <text x="280" y="140" style={{ fontSize: '7px', fill: 'var(--accent-orange)', fontFamily: 'var(--font-mono)' }}>Escalation & Veto Log</text>
 
             {/* Nodes */}
             {/* Shareholders Node */}
             <g onClick={() => setSelectedNode('shareholders')} style={{ cursor: 'pointer' }}>
               <rect x="20" y="20" width="100" height="40" rx="6"
-                fill={selectedNode === 'shareholders' ? 'rgba(91,91,214,0.1)' : 'var(--bg-default)'}
-                stroke={selectedNode === 'shareholders' ? '#5B5BD6' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="70" y="40" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Shareholders</text>
-              <text x="70" y="50" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>Capital Investment</text>
+                fill={selectedNode === 'shareholders' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
+                stroke={selectedNode === 'shareholders' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="70" y="40" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Shareholders</text>
+              <text x="70" y="50" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>Capital Investment</text>
             </g>
 
             {/* LTBT Node */}
             <g onClick={() => setSelectedNode('trust')} style={{ cursor: 'pointer' }}>
               <rect x="200" y="20" width="100" height="40" rx="6"
-                fill={selectedNode === 'trust' ? 'rgba(20,87,204,0.1)' : 'var(--bg-default)'}
-                stroke={selectedNode === 'trust' ? '#1457CC' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="250" y="40" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Benefit Trust (LTBT)</text>
-              <text x="250" y="50" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>Class T Trustee</text>
+                fill={selectedNode === 'trust' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
+                stroke={selectedNode === 'trust' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="250" y="40" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Benefit Trust (LTBT)</text>
+              <text x="250" y="50" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>Class T Trustee</text>
             </g>
 
             {/* Board of Directors Node */}
             <g onClick={() => setSelectedNode('board')} style={{ cursor: 'pointer' }}>
               <rect x="100" y="110" width="120" height="40" rx="8"
-                fill={selectedNode === 'board' ? 'rgba(124,58,237,0.1)' : 'var(--bg-default)'}
-                stroke={selectedNode === 'board' ? '#7C3AED' : 'var(--border-default)'} strokeWidth="2" />
-              <text x="160" y="130" textAnchor="middle" style={{ fontSize: '10px', fontWeight: 700, fill: 'var(--text-primary)' }}>Board of Directors</text>
-              <text x="160" y="141" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>Tripartite Fiduciary</text>
+                fill={selectedNode === 'board' ? 'var(--accent-red-wash)' : 'var(--bg-default)'}
+                stroke={selectedNode === 'board' ? 'var(--brand-primary-dark)' : 'var(--border-default)'} strokeWidth="2" />
+              <text x="160" y="130" textAnchor="middle" style={{ fontSize: '10px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Board of Directors</text>
+              <text x="160" y="141" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>Tripartite Fiduciary</text>
             </g>
 
             {/* Safety Veto Node */}
             <g onClick={() => setSelectedNode('veto')} style={{ cursor: 'pointer' }}>
               <rect x="100" y="200" width="120" height="40" rx="8"
-                fill={selectedNode === 'veto' ? 'rgba(185,56,21,0.1)' : 'var(--bg-default)'}
-                stroke={selectedNode === 'veto' ? '#B93815' : 'var(--border-default)'} strokeWidth="2" />
-              <text x="160" y="220" textAnchor="middle" style={{ fontSize: '9.5px', fontWeight: 700, fill: 'var(--text-primary)' }}>RSO & CEO Veto Pipeline</text>
-              <text x="160" y="231" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>RSP v3.2 Evaluation</text>
+                fill={selectedNode === 'veto' ? 'var(--accent-red-wash)' : 'var(--bg-default)'}
+                stroke={selectedNode === 'veto' ? 'var(--accent-orange)' : 'var(--border-default)'} strokeWidth="2" />
+              <text x="160" y="220" textAnchor="middle" style={{ fontSize: '9.5px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>RSO & CEO Veto Pipeline</text>
+              <text x="160" y="231" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>RSP v3.2 Evaluation</text>
             </g>
           </svg>
         </div>
@@ -145,19 +145,19 @@ function GovernanceFlowDiagram() {
         {/* Selected detail panel */}
         <div style={{ flex: 1, minWidth: '240px' }}>
           <div style={{
-            padding: '20px', borderRadius: '12px',
-            background: `${current.color}07`,
-            border: `1px solid ${current.color}25`,
+            padding: '20px', borderRadius: 'var(--r-md)',
+            background: 'var(--bg-muted)',
+            border: '1px solid var(--border-default)',
             borderLeft: `4px solid ${current.color}`,
-            transition: 'all 0.2s ease',
+            transition: 'var(--transition-smooth)',
           }}>
             <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: current.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '4px', fontWeight: 700 }}>
               {current.role}
             </span>
-            <h4 style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px' }}>
+            <h4 style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px', fontFamily: 'var(--font-sans)' }}>
               {current.title}
             </h4>
-            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
               {current.body}
             </p>
           </div>
@@ -169,9 +169,9 @@ function GovernanceFlowDiagram() {
 
 // ─── Capital-Compute Mortgage Escalator ─────────────────────────────────────
 const COMPUTE_DATA = [
-  { label: 'Google Pre-training Investment', amount: 2, scale: 'B', color: '#2E7EE0', note: 'Equity + cloud credits' },
-  { label: 'Amazon Strategic Partnership',  amount: 4, scale: 'B', color: '#1457CC', note: 'Capacity & pre-training credits' },
-  { label: '10-Year Cloud Compute Liability', amount: 100, scale: 'B+', color: '#B93815', note: 'AWS/GCP pre-commitments' },
+  { label: 'Google Pre-training Investment', amount: 2, scale: 'B', color: 'var(--brand-primary)', note: 'Equity + cloud credits' },
+  { label: 'Amazon Strategic Partnership',  amount: 4, scale: 'B', color: 'var(--brand-primary-dark)', note: 'Capacity & pre-training credits' },
+  { label: '10-Year Cloud Compute Liability', amount: 100, scale: 'B+', color: 'var(--accent-orange)', note: 'AWS/GCP pre-commitments' },
 ];
 
 function ComputeMortgageEscalator() {
@@ -193,7 +193,7 @@ function ComputeMortgageEscalator() {
         <span style={styles.eyebrow}>COMPUTE INFRASTRUCTURE LIABILITIES</span>
         <h3 style={styles.cardTitle}>The Capital-Compute Trap</h3>
         <p style={styles.cardDesc}>
-          Anthropic's massive compute dependency. Google and Amazon funding structures function as compute mortgages, committing the lab to $100B+ in pre-training capacity fees that force monetization rushes.
+          Anthropic\'s massive compute dependency. Google and Amazon funding structures function as compute mortgages, committing the lab to $100B+ in pre-training capacity fees that force monetization rushes.
         </p>
       </div>
 
@@ -203,23 +203,23 @@ function ComputeMortgageEscalator() {
           return (
             <div key={i}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '5px' }}>
-                <span style={{ fontSize: '12.5px', fontWeight: 700, color: 'var(--text-primary)' }}>
+                <span style={{ fontSize: '12.5px', fontWeight: 700, color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>
                   {d.label}
                 </span>
                 <span style={{ fontSize: '14px', fontWeight: 800, color: d.color, fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
                   ${d.amount}{d.scale}
                 </span>
               </div>
-              <div style={{ height: '18px', background: 'var(--bg-muted)', borderRadius: '4px', overflow: 'hidden' }}>
+              <div style={{ height: '18px', background: 'var(--bg-muted)', borderRadius: 'var(--r-sm)', overflow: 'hidden' }}>
                 <div style={{
                   height: '100%',
                   width: animated ? `${w}%` : '0%',
                   background: d.color,
-                  borderRadius: '4px',
-                  transition: `width ${0.7 + i * 0.15}s cubic-bezier(0.16,1,0.3,1)`,
+                  borderRadius: 'var(--r-sm)',
+                  transition: `width ${0.7 + i * 0.15}s var(--ease-settle)`,
                 }} />
               </div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '4px' }}>
+              <div style={{ fontSize: '10px', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.04em', marginTop: '4px' }}>
                 {d.note}
               </div>
             </div>
@@ -228,14 +228,14 @@ function ComputeMortgageEscalator() {
       </div>
       
       <div style={{
-        marginTop: '20px', padding: '14px 18px', borderRadius: '8px',
-        background: 'rgba(185,56,21,0.04)', border: '1px solid rgba(185,56,21,0.15)',
-        fontSize: '11.5px', color: 'var(--text-secondary)', lineHeight: 1.6,
+        marginTop: '20px', padding: '14px 18px', borderRadius: 'var(--r-md)',
+        background: 'var(--accent-red-wash)', border: '1px solid var(--accent-red-border)',
+        fontSize: '11.5px', color: 'var(--text-secondary)', lineHeight: 1.6, fontFamily: 'var(--font-sans)'
       }}>
         <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '4px' }}>
           Strategic Reality & RSP Dilution:
         </strong>
-        Because pre-training requires exponential compute budgets, Anthropic's charter protection is heavily pressured by cloud debt. In transition to **RSP v3.0+**, the lab backed away from unilateral hard-pause commitments, opting for flexible guardrails to prevent falling into commercial irrelevance compared to OpenAI.
+        Because pre-training requires exponential compute budgets, Anthropic\'s charter protection is heavily pressured by cloud debt. In transition to **RSP v3.0+**, the lab backed away from unilateral hard-pause commitments, opting for flexible guardrails to prevent falling into commercial irrelevance compared to OpenAI.
       </div>
     </div>
   );
@@ -258,7 +258,7 @@ const TENSION_DATA = [
     severity: 'high',
   },
   {
-    espoused: 'Anonymized whistlerblowing reporting',
+    espoused: 'Anonymized whistleblowing reporting',
     espousedDetail: 'EthicsPoint NAVEX portals allow employees to report safety breaches anonymously to the Board.',
     tacit: '"Confidential S-1 prep encourages secrecy"',
     tacitDetail: 'IPO preparations and strict investor NDAs establish a strong tacit assumption that public disclosures or leaks are acts of corporate sabotage.',
@@ -273,13 +273,17 @@ const TENSION_DATA = [
   },
 ];
 
-const SEVERITY_COLORS = { high: '#B93815', critical: '#D92D20', medium: '#5B5BD6' };
+const SEVERITY_COLORS = { high: 'var(--accent-orange)', critical: 'var(--accent-red)', medium: 'var(--brand-primary)' };
 const SEVERITY_LABELS = { high: 'HIGH TENSION', critical: 'CRITICAL TENSION', medium: 'MODERATE TENSION' };
+const SEVERITY_WASH = { high: 'var(--accent-red-wash)', critical: 'var(--accent-red-wash)', medium: 'rgba(20,87,204,0.05)' };
+const SEVERITY_BORDER = { high: 'var(--accent-red-border)', critical: 'var(--accent-red-border)', medium: 'rgba(20,87,204,0.15)' };
 
 function TensionCore({ tensionMode }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const current = TENSION_DATA[activeIdx];
   const sevColor = SEVERITY_COLORS[current.severity];
+  const wash = SEVERITY_WASH[current.severity];
+  const border = SEVERITY_BORDER[current.severity];
 
   return (
     <div className={`glass-panel ${tensionMode ? 'glass-panel-glow-tension' : ''}`} style={{ padding: '32px' }}>
@@ -287,7 +291,7 @@ function TensionCore({ tensionMode }) {
         <span style={styles.eyebrow}>ESPOUSED VALUES vs. TACIT ASSUMPTIONS</span>
         <h3 style={styles.cardTitle}>Power & Governance Tensions</h3>
         <p style={styles.cardDesc}>
-           ufficiale legal structures and safety pledges versus the commercial realities of compute commitments and competitive pressure.
+           Official legal structures and safety pledges versus the commercial realities of compute commitments and competitive pressure.
         </p>
       </div>
 
@@ -296,17 +300,17 @@ function TensionCore({ tensionMode }) {
           <button key={i} onClick={() => setActiveIdx(i)}
             style={{
               display: 'flex', alignItems: 'center', gap: '10px',
-              padding: '10px 14px', borderRadius: '8px', textAlign: 'left', cursor: 'pointer',
-              border: `1px solid ${activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--border-default)'}`,
-              background: activeIdx === i ? `${SEVERITY_COLORS[t.severity]}08` : 'transparent',
-              transition: 'all 0.18s ease',
+              padding: '10px 14px', borderRadius: 'var(--r-md)', textAlign: 'left', cursor: 'pointer',
+              border: `1.5px solid ${activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--border-default)'}`,
+              background: activeIdx === i ? `${SEVERITY_COLORS[t.severity]}10` : 'transparent',
+              transition: 'all 0.18s var(--ease-settle)',
             }}>
             <div style={{
               width: '8px', height: '8px', borderRadius: '50%', flexShrink: 0,
               background: SEVERITY_COLORS[t.severity],
               boxShadow: activeIdx === i ? `0 0 0 3px ${SEVERITY_COLORS[t.severity]}30` : 'none',
             }} />
-            <span style={{ fontSize: '12px', fontWeight: activeIdx === i ? 700 : 500, color: activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--text-secondary)', flex: 1, lineHeight: 1.3 }}>
+            <span style={{ fontSize: '12px', fontWeight: activeIdx === i ? 700 : 500, color: activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--text-secondary)', flex: 1, lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
               {t.espoused}
             </span>
             <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: SEVERITY_COLORS[t.severity], fontWeight: 700, flexShrink: 0, letterSpacing: '0.04em' }}>
@@ -318,34 +322,34 @@ function TensionCore({ tensionMode }) {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div style={{
-          padding: '20px', borderRadius: '10px',
+          padding: '20px', borderRadius: 'var(--r-md)',
           background: 'var(--bg-muted)', border: '1px solid var(--border-default)',
           borderTop: '3px solid var(--brand-primary)',
         }}>
           <div style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--brand-primary)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '8px' }}>
             WHAT ANTHROPIC SAYS
           </div>
-          <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.3 }}>
+          <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
             "{current.espoused}"
           </div>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
             {current.espousedDetail}
           </p>
         </div>
 
         <div style={{
-          padding: '20px', borderRadius: '10px',
-          background: `${sevColor}05`,
-          border: `1px solid ${sevColor}25`,
+          padding: '20px', borderRadius: 'var(--r-md)',
+          background: wash,
+          border: `1px solid ${border}`,
           borderTop: `3px solid ${sevColor}`,
         }}>
           <div style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: sevColor, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '8px' }}>
             WHAT ACTUALLY HAPPENS
           </div>
-          <div style={{ fontSize: '13px', fontWeight: 700, color: sevColor, marginBottom: '10px', lineHeight: 1.3 }}>
+          <div style={{ fontSize: '13px', fontWeight: 700, color: sevColor, marginBottom: '10px', lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
             "{current.tacit}"
           </div>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
             {current.tacitDetail}
           </p>
         </div>
@@ -400,9 +404,9 @@ const POWER_SCHEIN = {
 };
 
 const TAB_META = [
-  { id: 'artifacts',        label: 'Artifacts & Behaviors', sub: 'Visible Layer',   color: '#1457CC' },
-  { id: 'espousedValues',   label: 'Espoused Values',        sub: 'Declared Layer', color: '#7C3AED' },
-  { id: 'tacitAssumptions', label: 'Tacit Assumptions',      sub: 'Hidden Core',    color: '#08195C' },
+  { id: 'artifacts',        label: 'Artifacts & Behaviors', sub: 'Visible Layer',   color: 'var(--brand-primary)' },
+  { id: 'espousedValues',   label: 'Espoused Values',        sub: 'Declared Layer', color: 'var(--brand-primary-dark)' },
+  { id: 'tacitAssumptions', label: 'Tacit Assumptions',      sub: 'Hidden Core',    color: 'var(--brand-primary-dark)' },
 ];
 
 function PowerScheinBreakdown() {
@@ -427,15 +431,15 @@ function PowerScheinBreakdown() {
           <button key={tab.id}
             onClick={() => { setActiveTab(tab.id); setExpanded(null); }}
             style={{
-              padding: '10px 18px', borderRadius: '8px', textAlign: 'left', cursor: 'pointer',
+              padding: '10px 18px', borderRadius: 'var(--r-sm)', textAlign: 'left', cursor: 'pointer',
               border: `1.5px solid ${activeTab === tab.id ? tab.color : 'var(--border-default)'}`,
-              background: activeTab === tab.id ? `${tab.color}10` : 'transparent',
+              background: activeTab === tab.id ? 'var(--bg-muted)' : 'transparent',
               transition: 'all 0.2s var(--ease-settle)',
             }}>
-            <div style={{ fontSize: '12px', fontWeight: 700, color: activeTab === tab.id ? tab.color : 'var(--text-secondary)', lineHeight: 1.3, letterSpacing: '-0.01em' }}>
+            <div style={{ fontSize: '12px', fontWeight: 700, color: activeTab === tab.id ? tab.color : 'var(--text-secondary)', lineHeight: 1.3, letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
               {tab.label}
             </div>
-            <div style={{ fontSize: '9px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px' }}>
+            <div style={{ fontSize: '9px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', fontFamily: 'var(--font-mono)' }}>
               {tab.sub}
             </div>
           </button>
@@ -447,15 +451,15 @@ function PowerScheinBreakdown() {
           <div key={i}
             onClick={() => setExpanded(expanded === i ? null : i)}
             style={{
-              padding: '16px 18px', borderRadius: '10px', cursor: 'pointer',
+              padding: '16px 18px', borderRadius: 'var(--r-md)', cursor: 'pointer',
               border: `1px solid ${expanded === i ? meta.color : 'var(--border-default)'}`,
-              background: expanded === i ? `${meta.color}07` : 'var(--bg-default)',
+              background: expanded === i ? 'var(--bg-muted)' : 'var(--bg-default)',
               transition: 'all 0.22s var(--ease-settle)',
               transform: expanded === i ? 'translateY(-2px)' : 'translateY(0)',
-              boxShadow: expanded === i ? `0 6px 20px ${meta.color}18` : '0 1px 4px rgba(0,0,0,0.05)',
+              boxShadow: expanded === i ? 'var(--shadow-card)' : '0 1px 4px rgba(0,0,0,0.05)',
             }}>
             <div style={{ display: 'flex', justify: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '8px' }}>
-              <h4 style={{ fontSize: '12px', fontWeight: 700, color: expanded === i ? meta.color : 'var(--text-primary)', margin: 0, lineHeight: 1.35, flex: 1 }}>
+              <h4 style={{ fontSize: '12px', fontWeight: 700, color: expanded === i ? meta.color : 'var(--text-primary)', margin: 0, lineHeight: 1.35, flex: 1, fontFamily: 'var(--font-sans)' }}>
                 {item.name}
               </h4>
               <span style={{
@@ -464,19 +468,19 @@ function PowerScheinBreakdown() {
                 transform: expanded === i ? 'rotate(180deg)' : 'rotate(0deg)',
               }}>▾</span>
             </div>
-            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55 }}>
+            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontFamily: 'var(--font-sans)' }}>
               {item.description}
             </p>
             {expanded === i && (
               <div style={{
-                marginTop: '12px', padding: '10px 14px', borderRadius: '7px',
-                background: `${meta.color}08`, borderLeft: `3px solid ${meta.color}`,
+                marginTop: '12px', padding: '10px 14px', borderRadius: 'var(--r-sm)',
+                background: 'var(--bg-default)', borderLeft: `3px solid ${meta.color}`,
                 animation: 'fadeSlideIn 0.18s ease',
               }}>
                 <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: meta.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '5px', fontWeight: 600 }}>
                   Cultural Significance
                 </span>
-                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontStyle: 'italic' }}>
+                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontStyle: 'italic', fontFamily: 'var(--font-sans)' }}>
                   {item.extra}
                 </p>
               </div>
@@ -505,7 +509,7 @@ export default function PowerGovernancePage({ tensionMode }) {
         <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', letterSpacing: '-0.03em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
           Power & Governance
         </h2>
-        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px' }}>
+        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px', fontFamily: 'var(--font-sans)' }}>
           Deconstructs how authority and decision-making flow at Anthropic PBC. We trace the legal shield of Delaware Public Benefit charter balances, the Long-Term Benefit Trust voting check, the operational safety veto pipelines, and the commercializing pressures introduced by massive venture compute debt.
         </p>
       </section>
@@ -519,14 +523,14 @@ export default function PowerGovernancePage({ tensionMode }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '14px' }}>
           {STATS.map((s, i) => (
             <div key={i} className="glass-panel" style={{ padding: '20px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, #1457CC ${i * 25}%, #7C3AED ${100 - i * 15}%)` }} />
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)` }} />
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.85rem', fontWeight: 700, color: 'var(--brand-primary)', letterSpacing: '-0.05em', lineHeight: 1 }}>
                 <AnimatedNumber target={s.value} suffix={s.suffix} prefix={s.prefix} decimals={s.decimals} duration={1800 + i * 200} />
               </div>
-              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '7px', letterSpacing: '-0.01em' }}>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '7px', letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
                 {s.label}
               </div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+              <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
                 {s.note}
               </div>
             </div>

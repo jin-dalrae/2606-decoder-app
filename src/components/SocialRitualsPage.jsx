@@ -44,25 +44,25 @@ const WORKSPACE_ZONES = {
   greenhouse: {
     title: 'The Greenhouse Workspace & Library',
     focus: 'Physical Workspace Design (Howard St. SF)',
-    color: '#1457CC',
+    color: 'var(--brand-primary)',
     body: 'Anthropic\'s head office is designed to foster a botanical library atmosphere. Extensive indoor plantings (monsteras, fiddle-leaf figs, pothos) and wood-paneled meeting greenhouses reduce sensory stimulation, grounding researchers physically during intense pre-training sprints.',
   },
   vend: {
     title: 'Project Vend: Autonomous Snack Shop',
     focus: 'Empirical Agent Sandbox Experiment (May 2025)',
-    color: '#B93815',
+    color: 'var(--accent-orange)',
     body: 'A physical convenience kiosk controlled by a custom model named "Claudius." Claudius autonomously managed inventory and prices. It was found to underprice premium snacks to maximize user happiness, and bundle obsolete stock when budget constraints were introduced. Employees jailbroke it for free energy drinks, turning safety testing into a playful office ritual.',
   },
   deal: {
     title: 'Project Deal: Multi-Agent Marketplace',
     focus: 'Empirical Agent Market Sandbox Experiment (April 2026)',
-    color: '#7C3AED',
+    color: 'var(--brand-primary-dark)',
     body: 'A virtual negotiation market where employees and Claude agents traded resources. Advanced models (Sonnet 3.5 / Opus 3) extracted up to 35% higher utility margins through anchoring, strategic delay tactics, and concealing utility curves, highlighting how advanced agents behave as active economic actors rather than passive chat assistants.',
   },
   brand: {
     title: 'Claude Digital Brand Studio',
     focus: 'Humanities & Academic Interaction Design',
-    color: '#5B5BD6',
+    color: 'var(--brand-primary)',
     body: 'Claude\'s visual interface, styled under Jenny Wen, deliberately avoids cold, neon sci-fi themes. Earthy tones (unfired clay background) and elegant serif typography (Lora, PP Editorial) mimic paper, framing Claude as a scholarly research partner, reinforcing HHH (helpful, honest, harmless) espoused values.',
   },
 };
@@ -83,7 +83,7 @@ function WorkspaceZonalMap() {
 
       <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', alignItems: 'center' }}>
         {/* SVG Office Campus Map */}
-        <div style={{ flexShrink: 0, background: 'rgba(0,0,0,0.2)', padding: '16px', borderRadius: '12px', border: '1px solid var(--border-default)' }}>
+        <div style={{ flexShrink: 0, background: 'var(--bg-muted)', padding: '16px', borderRadius: 'var(--r-md)', border: '1px solid var(--border-default)' }}>
           <svg width="320" height="200" viewBox="0 0 320 200" style={{ overflow: 'visible' }}>
             {/* Campus Floor Outline */}
             <rect x="10" y="10" width="300" height="180" rx="10" fill="none" stroke="var(--border-default)" strokeWidth="1.5" />
@@ -95,37 +95,37 @@ function WorkspaceZonalMap() {
             {/* Greenhouse Library Zone */}
             <g onClick={() => setSelectedZone('greenhouse')} style={{ cursor: 'pointer' }}>
               <rect x="20" y="20" width="130" height="70" rx="6"
-                fill={selectedZone === 'greenhouse' ? 'rgba(20,87,204,0.08)' : 'rgba(255,255,255,0.02)'}
-                stroke={selectedZone === 'greenhouse' ? '#1457CC' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="85" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Greenhouse Library</text>
-              <text x="85" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>🌿 Biophilic Lounge</text>
+                fill={selectedZone === 'greenhouse' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'greenhouse' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="85" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Greenhouse Library</text>
+              <text x="85" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>🌿 Biophilic Lounge</text>
             </g>
 
             {/* Brand/Typography Studio */}
             <g onClick={() => setSelectedZone('brand')} style={{ cursor: 'pointer' }}>
               <rect x="170" y="20" width="130" height="70" rx="6"
-                fill={selectedZone === 'brand' ? 'rgba(91,91,214,0.08)' : 'rgba(255,255,255,0.02)'}
-                stroke={selectedZone === 'brand' ? '#5B5BD6' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="235" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Typography & Brand</text>
-              <text x="235" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>✍️ Serif/Clay Design</text>
+                fill={selectedZone === 'brand' ? 'rgba(8,25,92,0.06)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'brand' ? 'var(--brand-primary-dark)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="235" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Typography & Brand</text>
+              <text x="235" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>✍️ Serif/Clay Design</text>
             </g>
 
             {/* Project Vend Zone */}
             <g onClick={() => setSelectedZone('vend')} style={{ cursor: 'pointer' }}>
               <rect x="20" y="110" width="130" height="70" rx="6"
-                fill={selectedZone === 'vend' ? 'rgba(185,56,21,0.08)' : 'rgba(255,255,255,0.02)'}
-                stroke={selectedZone === 'vend' ? '#B93815' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="85" y="140" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Project Vend Sandbox</text>
-              <text x="85" y="152" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>🏪 Autonomous Shop</text>
+                fill={selectedZone === 'vend' ? 'var(--accent-red-wash)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'vend' ? 'var(--accent-orange)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="85" y="140" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Project Vend Sandbox</text>
+              <text x="85" y="152" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>🏪 Autonomous Shop</text>
             </g>
 
             {/* Project Deal Zone */}
             <g onClick={() => setSelectedZone('deal')} style={{ cursor: 'pointer' }}>
               <rect x="170" y="110" width="130" height="70" rx="6"
-                fill={selectedZone === 'deal' ? 'rgba(124,58,237,0.08)' : 'rgba(255,255,255,0.02)'}
-                stroke={selectedZone === 'deal' ? '#7C3AED' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="235" y="140" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)' }}>Project Deal Market</text>
-              <text x="235" y="152" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>🤝 Agent Negotiations</text>
+                fill={selectedZone === 'deal' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'deal' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="235" y="140" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Project Deal Market</text>
+              <text x="235" y="152" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>🤝 Agent Negotiations</text>
             </g>
           </svg>
         </div>
@@ -133,19 +133,19 @@ function WorkspaceZonalMap() {
         {/* Selected zone details card */}
         <div style={{ flex: 1, minWidth: '240px' }}>
           <div style={{
-            padding: '20px', borderRadius: '12px',
-            background: `${current.color}07`,
-            border: `1px solid ${current.color}25`,
+            padding: '20px', borderRadius: 'var(--r-md)',
+            background: 'var(--bg-muted)',
+            border: '1px solid var(--border-default)',
             borderLeft: `4px solid ${current.color}`,
-            transition: 'all 0.2s ease',
+            transition: 'var(--transition-smooth)',
           }}>
             <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: current.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '4px', fontWeight: 700 }}>
               {current.focus}
             </span>
-            <h4 style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px' }}>
+            <h4 style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px', fontFamily: 'var(--font-sans)' }}>
               {current.title}
             </h4>
-            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
               {current.body}
             </p>
           </div>
@@ -168,7 +168,7 @@ function ExistentialBurnoutSlider() {
           sociability: 85,
           wlb: 90,
           stigma: 'Rest and time-off are actively respected. Sibling resolve-by-consensus is standard.',
-          color: '#2E7EE0',
+          color: 'var(--brand-primary)',
         };
       case '2':
         return {
@@ -177,7 +177,7 @@ function ExistentialBurnoutSlider() {
           sociability: 88,
           wlb: 72,
           stigma: 'Weekend Slack replies are typical but not enforced. Office green zones are quiet.',
-          color: '#1457CC',
+          color: 'var(--brand-primary)',
         };
       case '3':
         return {
@@ -186,7 +186,7 @@ function ExistentialBurnoutSlider() {
           sociability: 88,
           wlb: 50,
           stigma: 'Late-night checkins begin. PM requirements are secondary to capability reviews.',
-          color: '#7C3AED',
+          color: 'var(--brand-primary-dark)',
         };
       case '4':
         return {
@@ -195,7 +195,7 @@ function ExistentialBurnoutSlider() {
           sociability: 85,
           wlb: 30,
           stigma: '24/7 on-call rotation. Rest is pushed aside. High collective guilt if logging off.',
-          color: '#B93815',
+          color: 'var(--accent-orange)',
         };
       case '5':
       default:
@@ -205,7 +205,7 @@ function ExistentialBurnoutSlider() {
           sociability: 80,
           wlb: 12,
           stigma: 'Boundary collapse. Logging off at 6 PM is culturally seen as a moral safety failure.',
-          color: '#D92D20',
+          color: 'var(--accent-red)',
         };
     }
   };
@@ -256,51 +256,51 @@ function ExistentialBurnoutSlider() {
         {/* Dynamic Metrics Output */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px' }}>
           {/* Solidarity */}
-          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(0,0,0,0.15)', border: '1px solid var(--border-default)' }}>
+          <div style={{ padding: '16px', borderRadius: 'var(--r-md)', background: 'var(--bg-muted)', border: '1px solid var(--border-default)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '11px' }}>
               <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>Solidarity (Alignment)</span>
-              <strong style={{ color: '#1457CC' }}>{metrics.solidarity}%</strong>
+              <strong style={{ color: 'var(--brand-primary)' }}>{metrics.solidarity}%</strong>
             </div>
-            <div style={{ height: '4px', background: 'var(--bg-muted)', borderRadius: '2px', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${metrics.solidarity}%`, background: '#1457CC', transition: 'width 0.2s ease' }} />
+            <div style={{ height: '4px', background: 'var(--bg-default)', borderRadius: '2px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${metrics.solidarity}%`, background: 'var(--brand-primary)', transition: 'width 0.2s ease' }} />
             </div>
           </div>
 
           {/* Sociability */}
-          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(0,0,0,0.15)', border: '1px solid var(--border-default)' }}>
+          <div style={{ padding: '16px', borderRadius: 'var(--r-md)', background: 'var(--bg-muted)', border: '1px solid var(--border-default)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '11px' }}>
               <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>Sociability (Warmth)</span>
-              <strong style={{ color: '#7C3AED' }}>{metrics.sociability}%</strong>
+              <strong style={{ color: 'var(--brand-primary-dark)' }}>{metrics.sociability}%</strong>
             </div>
-            <div style={{ height: '4px', background: 'var(--bg-muted)', borderRadius: '2px', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${metrics.sociability}%`, background: '#7C3AED', transition: 'width 0.2s ease' }} />
+            <div style={{ height: '4px', background: 'var(--bg-default)', borderRadius: '2px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${metrics.sociability}%`, background: 'var(--brand-primary-dark)', transition: 'width 0.2s ease' }} />
             </div>
           </div>
 
           {/* WLB Integrity */}
-          <div style={{ padding: '16px', borderRadius: '10px', background: 'rgba(0,0,0,0.15)', border: '1px solid var(--border-default)' }}>
+          <div style={{ padding: '16px', borderRadius: 'var(--r-md)', background: 'var(--bg-muted)', border: '1px solid var(--border-default)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '11px' }}>
               <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>WLB Boundary Integrity</span>
-              <strong style={{ color: metrics.wlb < 40 ? '#D92D20' : '#2E7EE0' }}>{metrics.wlb}%</strong>
+              <strong style={{ color: metrics.wlb < 40 ? 'var(--accent-red)' : 'var(--brand-primary)' }}>{metrics.wlb}%</strong>
             </div>
-            <div style={{ height: '4px', background: 'var(--bg-muted)', borderRadius: '2px', overflow: 'hidden' }}>
-              <div style={{ height: '100%', width: `${metrics.wlb}%`, background: metrics.wlb < 40 ? '#D92D20' : '#2E7EE0', transition: 'width 0.2s ease' }} />
+            <div style={{ height: '4px', background: 'var(--bg-default)', borderRadius: '2px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${metrics.wlb}%`, background: metrics.wlb < 40 ? 'var(--accent-red)' : 'var(--brand-primary)', transition: 'width 0.2s ease' }} />
             </div>
           </div>
         </div>
 
         {/* Dynamic Social Impact explanation */}
         <div style={{
-          padding: '16px 18px', borderRadius: '10px',
-          background: `${metrics.color}07`,
-          border: `1px solid ${metrics.color}25`,
+          padding: '16px 18px', borderRadius: 'var(--r-md)',
+          background: 'var(--bg-muted)',
+          border: '1px solid var(--border-default)',
           borderLeft: `4px solid ${metrics.color}`,
           transition: 'all 0.2s ease',
         }}>
           <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: metrics.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '5px', fontWeight: 700 }}>
             Culture Loop & Social Stigma
           </span>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
             {metrics.stigma}
           </p>
         </div>
@@ -341,13 +341,17 @@ const TENSION_DATA = [
   },
 ];
 
-const SEVERITY_COLORS = { high: '#B93815', critical: '#D92D20', medium: '#5B5BD6' };
+const SEVERITY_COLORS = { high: 'var(--accent-orange)', critical: 'var(--accent-red)', medium: 'var(--brand-primary)' };
 const SEVERITY_LABELS = { high: 'HIGH TENSION', critical: 'CRITICAL TENSION', medium: 'MODERATE TENSION' };
+const SEVERITY_WASH = { high: 'var(--accent-red-wash)', critical: 'var(--accent-red-wash)', medium: 'rgba(20,87,204,0.05)' };
+const SEVERITY_BORDER = { high: 'var(--accent-red-border)', critical: 'var(--accent-red-border)', medium: 'rgba(20,87,204,0.15)' };
 
 function TensionCore({ tensionMode }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const current = TENSION_DATA[activeIdx];
   const sevColor = SEVERITY_COLORS[current.severity];
+  const wash = SEVERITY_WASH[current.severity];
+  const border = SEVERITY_BORDER[current.severity];
 
   return (
     <div className={`glass-panel ${tensionMode ? 'glass-panel-glow-tension' : ''}`} style={{ padding: '32px' }}>
@@ -364,17 +368,17 @@ function TensionCore({ tensionMode }) {
           <button key={i} onClick={() => setActiveIdx(i)}
             style={{
               display: 'flex', alignItems: 'center', gap: '10px',
-              padding: '10px 14px', borderRadius: '8px', textAlign: 'left', cursor: 'pointer',
-              border: `1px solid ${activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--border-default)'}`,
-              background: activeIdx === i ? `${SEVERITY_COLORS[t.severity]}08` : 'transparent',
-              transition: 'all 0.18s ease',
+              padding: '10px 14px', borderRadius: 'var(--r-md)', textAlign: 'left', cursor: 'pointer',
+              border: `1.5px solid ${activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--border-default)'}`,
+              background: activeIdx === i ? `${SEVERITY_COLORS[t.severity]}10` : 'transparent',
+              transition: 'all 0.18s var(--ease-settle)',
             }}>
             <div style={{
               width: '8px', height: '8px', borderRadius: '50%', flexShrink: 0,
               background: SEVERITY_COLORS[t.severity],
               boxShadow: activeIdx === i ? `0 0 0 3px ${SEVERITY_COLORS[t.severity]}30` : 'none',
             }} />
-            <span style={{ fontSize: '12px', fontWeight: activeIdx === i ? 700 : 500, color: activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--text-secondary)', flex: 1, lineHeight: 1.3 }}>
+            <span style={{ fontSize: '12px', fontWeight: activeIdx === i ? 700 : 500, color: activeIdx === i ? SEVERITY_COLORS[t.severity] : 'var(--text-secondary)', flex: 1, lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
               {t.espoused}
             </span>
             <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: SEVERITY_COLORS[t.severity], fontWeight: 700, flexShrink: 0, letterSpacing: '0.04em' }}>
@@ -386,34 +390,34 @@ function TensionCore({ tensionMode }) {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div style={{
-          padding: '20px', borderRadius: '10px',
+          padding: '20px', borderRadius: 'var(--r-md)',
           background: 'var(--bg-muted)', border: '1px solid var(--border-default)',
           borderTop: '3px solid var(--brand-primary)',
         }}>
           <div style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--brand-primary)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '8px' }}>
             WHAT ANTHROPIC SAYS
           </div>
-          <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.3 }}>
+          <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
             "{current.espoused}"
           </div>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
             {current.espousedDetail}
           </p>
         </div>
 
         <div style={{
-          padding: '20px', borderRadius: '10px',
-          background: `${sevColor}05`,
-          border: `1px solid ${sevColor}25`,
+          padding: '20px', borderRadius: 'var(--r-md)',
+          background: wash,
+          border: `1px solid ${border}`,
           borderTop: `3px solid ${sevColor}`,
         }}>
           <div style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: sevColor, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '8px' }}>
             WHAT ACTUALLY HAPPENS
           </div>
-          <div style={{ fontSize: '13px', fontWeight: 700, color: sevColor, marginBottom: '10px', lineHeight: 1.3 }}>
+          <div style={{ fontSize: '13px', fontWeight: 700, color: sevColor, marginBottom: '10px', lineHeight: 1.3, fontFamily: 'var(--font-sans)' }}>
             "{current.tacit}"
           </div>
-          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
             {current.tacitDetail}
           </p>
         </div>
@@ -489,15 +493,15 @@ function SocialScheinBreakdown() {
           <button key={tab.id}
             onClick={() => { setActiveTab(tab.id); setExpanded(null); }}
             style={{
-              padding: '10px 18px', borderRadius: '8px', textAlign: 'left', cursor: 'pointer',
+              padding: '10px 18px', borderRadius: 'var(--r-sm)', textAlign: 'left', cursor: 'pointer',
               border: `1.5px solid ${activeTab === tab.id ? tab.color : 'var(--border-default)'}`,
-              background: activeTab === tab.id ? `${tab.color}10` : 'transparent',
+              background: activeTab === tab.id ? 'var(--bg-muted)' : 'transparent',
               transition: 'all 0.2s var(--ease-settle)',
             }}>
-            <div style={{ fontSize: '12px', fontWeight: 700, color: activeTab === tab.id ? tab.color : 'var(--text-secondary)', lineHeight: 1.3, letterSpacing: '-0.01em' }}>
+            <div style={{ fontSize: '12px', fontWeight: 700, color: activeTab === tab.id ? tab.color : 'var(--text-secondary)', lineHeight: 1.3, letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
               {tab.label}
             </div>
-            <div style={{ fontSize: '9px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px' }}>
+            <div style={{ fontSize: '9px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', fontFamily: 'var(--font-mono)' }}>
               {tab.sub}
             </div>
           </button>
@@ -509,15 +513,15 @@ function SocialScheinBreakdown() {
           <div key={i}
             onClick={() => setExpanded(expanded === i ? null : i)}
             style={{
-              padding: '16px 18px', borderRadius: '10px', cursor: 'pointer',
+              padding: '16px 18px', borderRadius: 'var(--r-md)', cursor: 'pointer',
               border: `1px solid ${expanded === i ? meta.color : 'var(--border-default)'}`,
-              background: expanded === i ? `${meta.color}07` : 'var(--bg-default)',
+              background: expanded === i ? 'var(--bg-muted)' : 'var(--bg-default)',
               transition: 'all 0.22s var(--ease-settle)',
               transform: expanded === i ? 'translateY(-2px)' : 'translateY(0)',
-              boxShadow: expanded === i ? `0 6px 20px ${meta.color}18` : '0 1px 4px rgba(0,0,0,0.05)',
+              boxShadow: expanded === i ? 'var(--shadow-card)' : '0 1px 4px rgba(0,0,0,0.05)',
             }}>
             <div style={{ display: 'flex', justify: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '8px' }}>
-              <h4 style={{ fontSize: '12px', fontWeight: 700, color: expanded === i ? meta.color : 'var(--text-primary)', margin: 0, lineHeight: 1.35, flex: 1 }}>
+              <h4 style={{ fontSize: '12px', fontWeight: 700, color: expanded === i ? meta.color : 'var(--text-primary)', margin: 0, lineHeight: 1.35, flex: 1, fontFamily: 'var(--font-sans)' }}>
                 {item.name}
               </h4>
               <span style={{
@@ -526,19 +530,19 @@ function SocialScheinBreakdown() {
                 transform: expanded === i ? 'rotate(180deg)' : 'rotate(0deg)',
               }}>▾</span>
             </div>
-            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55 }}>
+            <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontFamily: 'var(--font-sans)' }}>
               {item.description}
             </p>
             {expanded === i && (
               <div style={{
-                marginTop: '12px', padding: '10px 14px', borderRadius: '7px',
-                background: `${meta.color}08`, borderLeft: `3px solid ${meta.color}`,
+                marginTop: '12px', padding: '10px 14px', borderRadius: 'var(--r-sm)',
+                background: 'var(--bg-default)', borderLeft: `3px solid ${meta.color}`,
                 animation: 'fadeSlideIn 0.18s ease',
               }}>
                 <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: meta.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '5px', fontWeight: 600 }}>
                   Cultural Significance
                 </span>
-                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontStyle: 'italic' }}>
+                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontStyle: 'italic', fontFamily: 'var(--font-sans)' }}>
                   {item.extra}
                 </p>
               </div>
@@ -554,7 +558,7 @@ function SocialScheinBreakdown() {
 const STATS = [
   { label: 'SF Plant Count',       value: 150, suffix: '+',   prefix: '',   decimals: 0, note: 'Biophilic Greens' },
   { label: 'Sandbox Projects',     value: 2,   suffix: '',    prefix: '',   decimals: 0, note: 'Vend & Deal' },
-  { label: 'Weekly hours',         value: 55,  suffix: 'h+',  prefix: '~',  decimals: 0, note: 'Pre-training average' },
+  { label: 'Weekly hours',         value: 55,  suffix: 'h+',  prefix: '',  decimals: 0, note: 'Pre-training average' },
   { label: 'HHH Peer Rating',      value: 9.2, suffix: '/10', prefix: '',   decimals: 1, note: 'Kind/Direct feedback' },
 ];
 
@@ -567,7 +571,7 @@ export default function SocialRitualsPage({ tensionMode }) {
         <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', letterSpacing: '-0.03em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
           Social & Rituals
         </h2>
-        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px' }}>
+        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px', fontFamily: 'var(--font-sans)' }}>
           Observes the daily habits, spatial artifacts, experimental sandboxes, and visual interfaces that define the collaborative environment of the lab. We audit how the scholarly, "anti-hype" biophilic greenery and kind direct feedback loops mask and enable boundary collapse under pre-training sprint pressures.
         </p>
       </section>
@@ -581,14 +585,14 @@ export default function SocialRitualsPage({ tensionMode }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '14px' }}>
           {STATS.map((s, i) => (
             <div key={i} className="glass-panel" style={{ padding: '20px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, #1457CC ${i * 25}%, #7C3AED ${100 - i * 15}%)` }} />
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)` }} />
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.85rem', fontWeight: 700, color: 'var(--brand-primary)', letterSpacing: '-0.05em', lineHeight: 1 }}>
                 <AnimatedNumber target={s.value} suffix={s.suffix} prefix={s.prefix} decimals={s.decimals} duration={1800 + i * 200} />
               </div>
-              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '7px', letterSpacing: '-0.01em' }}>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '7px', letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
                 {s.label}
               </div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+              <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
                 {s.note}
               </div>
             </div>
@@ -682,7 +686,7 @@ const styles = {
 };
 
 const TAB_META = [
-  { id: 'artifacts',        label: 'Artifacts & Behaviors', sub: 'Visible Layer',   color: '#1457CC' },
-  { id: 'espousedValues',   label: 'Espoused Values',        sub: 'Declared Layer', color: '#7C3AED' },
-  { id: 'tacitAssumptions', label: 'Tacit Assumptions',      sub: 'Hidden Core',    color: '#08195C' },
+  { id: 'artifacts',        label: 'Artifacts & Behaviors', sub: 'Visible Layer',   color: 'var(--brand-primary)' },
+  { id: 'espousedValues',   label: 'Espoused Values',        sub: 'Declared Layer', color: 'var(--brand-primary-dark)' },
+  { id: 'tacitAssumptions', label: 'Tacit Assumptions',      sub: 'Hidden Core',    color: 'var(--brand-primary-dark)' },
 ];

@@ -7,25 +7,25 @@ const PILLAR_LINKAGES = [
   {
     pillar: 'Pillar 01 / Selection',
     title: 'Hiring as Culture Pre-Filter',
-    accent: '#1457CC',
+    accent: 'var(--brand-primary)',
     body: 'The 6–8 round recruitment pipeline (featuring the mission-fit panel and take-home safety case study) acts as a strict selector. By filtering out commercial opportunists and selecting only true alignment believers, Anthropic pre-engineers its High Solidarity before Day 1. By vetting for low-ego intellectual humility, they secure the High Sociability that anchors them in the Communal quadrant.',
   },
   {
     pillar: 'Pillar 02 / Progression',
     title: 'The Incentive-Burnout Loop',
-    accent: '#7C3AED',
+    accent: 'var(--brand-primary-dark)',
     body: 'Flat title hierarchies (MTS) and compensation PIUs focus efforts entirely on long-term safety research frontiers. However, because individual career progression is tied to safety sprint outputs, the unlimited PTO policy becomes a liability: the unwritten rule remains "burnout proves commitment," causing boundary collapse under the guise of existential urgency.',
   },
   {
     pillar: 'Pillar 03 / Governance',
     title: 'Charter Duty vs. Compute Debt',
-    accent: '#B93815',
+    accent: 'var(--accent-orange)',
     body: 'Delaware PBC fiduciary shields protect safety delay decisions from standard shareholder lawsuits. Yet, the $100B+ compute mortgages to Google and Amazon create commercial monetization loops. This compute trap resulted in the dilution of the RSP (v3.0+) from unilateral hard pauses to flexible risk mitigation reporting, forcing safety teams to run in competitor velocity cycles.',
   },
   {
     pillar: 'Pillar 04 / Rituals',
     title: 'Greenhouse Biophilia vs. Panama Sourcing',
-    accent: '#5B5BD6',
+    accent: 'var(--brand-primary)',
     body: 'Claude\'s clay-pulp typography (Lora serifs) and SF Howard Street plant installations project a scholarly library vibe designed to build public trust. This digital and physical biophilic brand stands in direct contradiction with aggressive data harvesting behaviors, such as the scan-and-destroy book ingestion of Project Panama.',
   },
 ];
@@ -56,7 +56,7 @@ export default function SynthesisPage({ tensionMode }) {
         <h2 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', letterSpacing: '-0.03em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
           Synthesis & Typology
         </h2>
-        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px' }}>
+        <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: '680px', fontFamily: 'var(--font-sans)' }}>
           Integrates our diagnostic findings across all four pillars. Explore where Anthropic plots on the Goffee-Jones grid relative to competitors, review design maturity radar parameters, and trace how selection, incentives, governance, and branding compound into a cohesive but fragile Communal culture.
         </p>
       </section>
@@ -69,20 +69,20 @@ export default function SynthesisPage({ tensionMode }) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
           {[
-            { label: 'Typology quadrant', value: 'COMMUNAL', note: 'High Soc. / High Sol.', color: '#1457CC' },
-            { label: 'Tension Spotlight Index', value: 'CRITICAL', note: 'Active Burnout & Compute Traps', color: '#B93815' },
-            { label: 'Design Maturity Score', value: '4.2 / 5.0', note: 'Integrated / Strategic', color: '#7C3AED' },
-            { label: 'Diagnostic Coverage', value: '100%', note: '4 Pillars Audited', color: '#5B5BD6' },
+            { label: 'Typology quadrant', value: 'COMMUNAL', note: 'High Soc. / High Sol.', color: 'var(--brand-primary)' },
+            { label: 'Tension Spotlight Index', value: 'CRITICAL', note: 'Active Burnout & Compute Traps', color: 'var(--accent-red)' },
+            { label: 'Design Maturity Score', value: '4.2 / 5.0', note: 'Integrated / Strategic', color: 'var(--brand-primary-dark)' },
+            { label: 'Diagnostic Coverage', value: '100%', note: '4 Pillars Audited', color: 'var(--brand-primary)' },
           ].map((s, i) => (
             <div key={i} className="glass-panel" style={{ padding: '20px', textAlign: 'center', position: 'relative' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', backgroundColor: s.color }} />
               <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em', lineHeight: 1, fontFamily: 'var(--font-display)' }}>
                 {s.value}
               </div>
-              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '8px', letterSpacing: '-0.01em' }}>
+              <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '8px', letterSpacing: '-0.01em', fontFamily: 'var(--font-sans)' }}>
                 {s.label}
               </div>
-              <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+              <div style={{ fontSize: '10px', color: 'var(--text-secondary)', marginTop: '3px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
                 {s.note}
               </div>
             </div>
@@ -114,18 +114,18 @@ export default function SynthesisPage({ tensionMode }) {
                   onClick={() => setSelectedPillar(idx)}
                   style={{
                     padding: '12px 16px',
-                    borderRadius: '8px',
+                    borderRadius: 'var(--r-md)',
                     textAlign: 'left',
                     cursor: 'pointer',
                     border: `1.5px solid ${selectedPillar === idx ? link.accent : 'var(--border-default)'}`,
-                    background: selectedPillar === idx ? `${link.accent}08` : 'transparent',
-                    transition: 'all 0.2s ease',
+                    background: selectedPillar === idx ? 'var(--bg-muted)' : 'transparent',
+                    transition: 'all 0.2s var(--ease-settle)',
                   }}
                 >
-                  <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', marginBottom: '2px' }}>
+                  <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', display: 'block', textTransform: 'uppercase', marginBottom: '2px' }}>
                     {link.pillar}
                   </span>
-                  <span style={{ fontSize: '12.5px', fontWeight: 700, color: selectedPillar === idx ? link.accent : 'var(--text-primary)' }}>
+                  <span style={{ fontSize: '12.5px', fontWeight: 700, color: selectedPillar === idx ? link.accent : 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>
                     {link.title}
                   </span>
                 </button>
@@ -136,9 +136,9 @@ export default function SynthesisPage({ tensionMode }) {
             <div style={{ flex: 1 }}>
               <div style={{
                 padding: '24px',
-                borderRadius: '12px',
-                background: `${PILLAR_LINKAGES[selectedPillar].accent}05`,
-                border: `1.5px solid ${PILLAR_LINKAGES[selectedPillar].accent}20`,
+                borderRadius: 'var(--r-md)',
+                background: 'var(--bg-muted)',
+                border: `1px solid var(--border-default)`,
                 borderLeft: `5px solid ${PILLAR_LINKAGES[selectedPillar].accent}`,
                 height: '100%',
                 display: 'flex',
@@ -148,10 +148,10 @@ export default function SynthesisPage({ tensionMode }) {
                 <span style={{ fontSize: '9.5px', fontFamily: 'var(--font-mono)', color: PILLAR_LINKAGES[selectedPillar].accent, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '6px' }}>
                   Typology Integration Signal
                 </span>
-                <h4 style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 12px' }}>
+                <h4 style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 12px', fontFamily: 'var(--font-sans)' }}>
                   {PILLAR_LINKAGES[selectedPillar].title}
                 </h4>
-                <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.65 }}>
+                <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.65, fontFamily: 'var(--font-sans)' }}>
                   {PILLAR_LINKAGES[selectedPillar].body}
                 </p>
               </div>
@@ -195,11 +195,11 @@ export default function SynthesisPage({ tensionMode }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
             {GROUP2_RECOMMENDATIONS.map((rec, i) => (
-              <div key={i} style={{ padding: '18px', borderRadius: '10px', background: 'rgba(0,0,0,0.15)', border: '1px solid var(--border-default)' }}>
-                <h4 style={{ fontSize: '12.5px', fontWeight: 700, color: 'var(--brand-primary)', marginBottom: '8px' }}>
+              <div key={i} style={{ padding: '18px', borderRadius: 'var(--r-md)', background: 'var(--bg-muted)', border: '1px solid var(--border-default)' }}>
+                <h4 style={{ fontSize: '12.5px', fontWeight: 700, color: 'var(--brand-primary)', marginBottom: '8px', fontFamily: 'var(--font-sans)' }}>
                   {rec.title}
                 </h4>
-                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55 }}>
+                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.55, fontFamily: 'var(--font-sans)' }}>
                   {rec.body}
                 </p>
               </div>
