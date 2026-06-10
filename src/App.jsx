@@ -10,6 +10,7 @@ import SelectionVettingPage from './components/SelectionVettingPage';
 import ProgressionRewardPage from './components/ProgressionRewardPage';
 import PowerGovernancePage from './components/PowerGovernancePage';
 import SocialRitualsPage from './components/SocialRitualsPage';
+import SynthesisPage from './components/SynthesisPage';
 
 function App() {
   const [tensionMode, setTensionMode] = useState(false);
@@ -41,33 +42,8 @@ function App() {
 
 
       case 'synthesis':
-        return (
-          <div className="app-main-content">
-            <section className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 05 / Evaluation</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Synthesis & Typology</h2>
-              <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-                Integrates our diagnostic findings. Examine where Anthropic plots on the Goffee-Jones grid relative to competitors, and review design maturity scores with live parameter sliders.
-              </p>
-            </section>
+        return <SynthesisPage tensionMode={tensionMode} />;
 
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Goffee-Jones Sociability vs. Solidarity Grid</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <GoffeeJonesGrid tensionMode={tensionMode} />
-            </section>
-
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Design Maturity Radar Metrics</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <DesignMaturity tensionMode={tensionMode} />
-            </section>
-          </div>
-        );
 
       case 'home':
       default:
