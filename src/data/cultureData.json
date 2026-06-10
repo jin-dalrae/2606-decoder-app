@@ -404,6 +404,114 @@
       "date": "March 2026",
       "sentiment": "critical",
       "tag": "Safety"
+    },
+    {
+      "id": "feed-sel-01",
+      "source": "Glassdoor Review — Research Engineer (Verified Employee)",
+      "category": "Artifact",
+      "content": "The interview process was unlike any I've experienced: eight rounds spanning three weeks. Two coding screens, a systems design, a research deep-dive on transformer internals, a dedicated 'mission & values fit' panel where senior researchers probed my views on existential AI risk, a bar-raiser from a separate team, a take-home AI safety case study, and a final VP conversation. The mission fit interview clearly carried equal weight to all technical rounds combined.",
+      "date": "October 2025",
+      "sentiment": "neutral",
+      "tag": "Hiring Process"
+    },
+    {
+      "id": "feed-sel-02",
+      "source": "LinkedIn Post — AI Engineer (Former Interviewee, Anonymous)",
+      "category": "Tacit",
+      "content": "I was rejected at Anthropic's mission fit panel despite strong technical scores. The feedback: 'You think about safety as a compliance layer rather than a core research imperative.' They were right. I hadn't fully internalized the existential framing. For Anthropic, if you treat safety as a constraint to be managed rather than the mission itself, you're a cultural mismatch before your first commit.",
+      "date": "August 2025",
+      "sentiment": "neutral",
+      "tag": "Mission Alignment"
+    },
+    {
+      "id": "feed-sel-03",
+      "source": "Glassdoor Review — Technical Recruiter (Anthropic Internal)",
+      "category": "Tacit",
+      "content": "We test for authentic mission alignment by asking candidates to describe a scenario where following safety best practices would actively harm the company commercially — and we watch how they respond. Candidates who hedge, or who suddenly find convenient reasons why safety and commercial interests align, fail this test. We want people who would genuinely choose safety over speed. The compensation is high precisely because we're not paying a mission discount.",
+      "date": "September 2025",
+      "sentiment": "positive",
+      "tag": "Mission Alignment"
+    },
+    {
+      "id": "feed-sel-04",
+      "source": "Wired — 'Inside Anthropic's Hiring Machine'",
+      "category": "Artifact",
+      "content": "Anthropic's referral network is its most powerful recruiting tool. Former Google Brain researchers bring in lab partners; ex-OpenAI engineers refer their most mission-aligned colleagues. Sources inside Anthropic estimate that over 60% of hires in the first 500 employees came through warm referrals — compressing timelines and pre-validating cultural fit before a single screening call. The network is the first filter.",
+      "date": "March 2025",
+      "sentiment": "neutral",
+      "tag": "Hiring Process"
+    },
+    {
+      "id": "feed-sel-05",
+      "source": "Glassdoor Review — Machine Learning Research Scientist",
+      "category": "Espoused",
+      "content": "The low-ego requirement is real and actively tested. During my panel interview, a senior researcher interrupted a response where I was listing my credentials and said: 'Tell me about what you got wrong recently, not what you got right.' That reframe — away from credential performance toward intellectual honesty — is the cultural signal they're looking for. Epistemic humility is not just a value on a poster; it's a hiring criterion with a dedicated interview round.",
+      "date": "November 2025",
+      "sentiment": "positive",
+      "tag": "Culture"
+    },
+    {
+      "id": "feed-sel-06",
+      "source": "Bloomberg — 'Anthropic's Selective Expansion'",
+      "category": "Tacit",
+      "content": "Sources familiar with Anthropic's hiring calibration describe a rule sometimes called the 'bar-raiser veto': any single senior employee, assigned as bar-raiser, can unilaterally block a hire regardless of unanimous positive feedback from the rest of the panel. This asymmetric veto power reflects the deeply held tacit assumption that a false negative — missing a great candidate — is always preferable to a false positive — hiring someone who damages culture at scale.",
+      "date": "January 2026",
+      "sentiment": "neutral",
+      "tag": "Hiring Process"
+    },
+    {
+      "id": "feed-prg-01",
+      "source": "Levels.fyi — Anthropic Compensation Data (Aggregated, 2025-2026)",
+      "category": "Artifact",
+      "content": "Anthropic compensation for Senior Members of Technical Staff (L5-equivalent) ranges from $400K to $800K+ total compensation annually: base salary $250K–$400K, performance equity via Profit Interest Units, and annual performance bonuses. These figures consistently rank in the top 2–3% of the industry — deliberately priced to attract candidates who could command peak FAANG offers, yet choose the mission over marginal pay maximization.",
+      "date": "February 2026",
+      "sentiment": "positive",
+      "tag": "Compensation"
+    },
+    {
+      "id": "feed-prg-02",
+      "source": "Glassdoor Review — Member of Technical Staff, Research",
+      "category": "Artifact",
+      "content": "The flat title structure is real and intentional. Almost everyone from junior engineer to principal-equivalent is a 'Member of Technical Staff' or 'Research Scientist.' No Senior Directors, no Distinguished Engineers, no Fellows. The flatness keeps ego and positional status signaling out of daily work. The only visible seniority signal is how often leadership cites your work in strategy discussions — which makes intellectual visibility the primary career currency.",
+      "date": "October 2025",
+      "sentiment": "neutral",
+      "tag": "Culture"
+    },
+    {
+      "id": "feed-prg-03",
+      "source": "Glassdoor Review — Frontend Engineer, 2 years tenure",
+      "category": "Tension",
+      "content": "I have earned $1.2M in total comp over two years, have unlimited PTO, and have not taken more than three consecutive days off once. Not because it's forbidden — rest is actively encouraged by HR. But when your team is racing to ensure AI doesn't cause catastrophic harm and your peers are working nights and weekends with genuine excitement, leaving at 5pm feels like a statement of misalignment. The culture rewards visible intensity in ways that no wellness policy can counteract.",
+      "date": "January 2026",
+      "sentiment": "critical",
+      "tag": "Work-Life Balance"
+    },
+    {
+      "id": "feed-prg-04",
+      "source": "Glassdoor Review — Research Scientist (Alignment Team)",
+      "category": "Tacit",
+      "content": "Promotions at Anthropic are almost entirely driven by impact on safety research. If you ship a capability feature that grows commercial revenue without contributing a safety insight, that's acceptable but not career-defining. If you discover a critical dangerous behavior pattern in a model under evaluation — even if it delays a release and costs the company commercially — leadership notices immediately. The implicit promotion metric is: how much did your work move the safety frontier?",
+      "date": "December 2025",
+      "sentiment": "positive",
+      "tag": "Culture"
+    },
+    {
+      "id": "feed-prg-05",
+      "source": "Glassdoor Review — Operations Manager, Anthropic",
+      "category": "Tension",
+      "content": "The wellness benefits exist: $200/month stipend, therapy access, meditation subscriptions. But there is a cultural artifact that undermines all of them: the company all-hands. When Dario presents on existential AI risk timelines, the implicit message is that there is no acceptable conventional work-life balance — the work is too important. You feel genuine guilt for not maximizing every day. The benefits are real. The cultural pressure to not use them is also real.",
+      "date": "September 2025",
+      "sentiment": "critical",
+      "tag": "Work-Life Balance"
+    },
+    {
+      "id": "feed-prg-06",
+      "source": "The Information — 'Inside Anthropic's Culture of Intense Focus'",
+      "category": "Tacit",
+      "content": "Multiple former employees describe an unspoken career mechanism at Anthropic: those who maintain strict work-life separation are not fired or formally managed out. They are simply not mentioned in promotion discussions, not included in high-visibility research tracks, and not tapped for the career-defining projects during model evaluation windows. The mechanism is social exclusion rather than reprimand — and it is experienced as more powerful precisely because it is never articulated.",
+      "date": "February 2026",
+      "sentiment": "critical",
+      "tag": "Work-Life Balance"
     }
   ]
 }
