@@ -14,14 +14,14 @@ export default function GoffeeJonesGrid({ tensionMode }) {
       name: 'Anthropic',
       x: anthropicCoords.x,
       y: anthropicCoords.y,
-      color: '#D97706', // Gold
+      color: '#1457CC', // Brand blue
       description: cultureData.goffeeJonesGrid.anthropic.description,
       isCurrent: true
     },
     ...cultureData.goffeeJonesGrid.comparativeNodes.map(node => {
-      let color = '#6B7280'; // Default Slate for Fragmented
-      if (node.quadrant === 'Mercenary') color = '#EF4444'; // Red
-      if (node.quadrant === 'Networked') color = '#F5EBE6'; // Sand/White
+      let color = '#B4B4B4'; // Default muted gray for Fragmented
+      if (node.quadrant === 'Mercenary') color = '#D92D20'; // Red
+      if (node.quadrant === 'Networked') color = '#08195C'; // Deep navy
       return {
         id: node.quadrant.toLowerCase(),
         name: node.exampleOrg,
@@ -104,7 +104,7 @@ export default function GoffeeJonesGrid({ tensionMode }) {
       // Communal
       return {
         quadrant: 'Communal',
-        accentColor: '#D97706',
+        accentColor: '#1457CC',
         title: 'Communal Culture (Anthropic Core)',
         description: cultureData.goffeeJonesGrid.anthropic.description,
         extraTitle: 'Key Culture Evidence',
@@ -121,7 +121,7 @@ export default function GoffeeJonesGrid({ tensionMode }) {
       const shift = cultureData.goffeeJonesGrid.scenarioShifts.toMercenary;
       return {
         quadrant: 'Mercenary',
-        accentColor: '#EF4444',
+        accentColor: '#D92D20',
         title: shift.title,
         description: shift.description,
         extraTitle: 'Culture Shift Impact',
@@ -132,7 +132,7 @@ export default function GoffeeJonesGrid({ tensionMode }) {
       const shift = cultureData.goffeeJonesGrid.scenarioShifts.toNetworked;
       return {
         quadrant: 'Networked',
-        accentColor: '#F5EBE6',
+        accentColor: '#08195C',
         title: shift.title,
         description: shift.description,
         extraTitle: 'Culture Shift Impact',
@@ -143,7 +143,7 @@ export default function GoffeeJonesGrid({ tensionMode }) {
       const shift = cultureData.goffeeJonesGrid.scenarioShifts.toFragmented;
       return {
         quadrant: 'Fragmented',
-        accentColor: '#6B7280',
+        accentColor: '#5D5D5D',
         title: shift.title,
         description: shift.description,
         extraTitle: 'Culture Shift Impact',
@@ -173,34 +173,34 @@ export default function GoffeeJonesGrid({ tensionMode }) {
         >
           <svg viewBox="0 0 400 400" className="w-full h-full">
             {/* Grid quadrants background styling */}
-            <rect x="200" y="0" width="200" height="200" fill="rgba(16, 185, 129, 0.02)" /> {/* Communal (Top Right) */}
-            <rect x="0" y="0" width="200" height="200" fill="rgba(239, 68, 68, 0.02)" />  {/* Mercenary (Top Left) */}
-            <rect x="0" y="200" width="200" height="200" fill="rgba(107, 114, 128, 0.02)" /> {/* Fragmented (Bottom Left) */}
-            <rect x="200" y="200" width="200" height="200" fill="rgba(217, 119, 6, 0.02)" /> {/* Networked (Bottom Right) */}
+            <rect x="200" y="0" width="200" height="200" fill="rgba(20, 87, 204, 0.04)" /> {/* Communal (Top Right) */}
+            <rect x="0" y="0" width="200" height="200" fill="rgba(217, 45, 32, 0.03)" />  {/* Mercenary (Top Left) */}
+            <rect x="0" y="200" width="200" height="200" fill="rgba(16, 15, 17, 0.02)" /> {/* Fragmented (Bottom Left) */}
+            <rect x="200" y="200" width="200" height="200" fill="rgba(8, 25, 92, 0.03)" /> {/* Networked (Bottom Right) */}
 
             {/* Grid Subdivisions (Fine grid lines) */}
             {[40, 80, 120, 160, 240, 280, 320, 360].map(coord => (
               <React.Fragment key={coord}>
-                <line x1={coord} y1="0" x2={coord} y2="400" stroke="rgba(255, 255, 255, 0.02)" strokeWidth="1" />
-                <line x1="0" y1={coord} x2="400" y2={coord} stroke="rgba(255, 255, 255, 0.02)" strokeWidth="1" />
+                <line x1={coord} y1="0" x2={coord} y2="400" stroke="rgba(16, 15, 17, 0.04)" strokeWidth="1" />
+                <line x1="0" y1={coord} x2="400" y2={coord} stroke="rgba(16, 15, 17, 0.04)" strokeWidth="1" />
               </React.Fragment>
             ))}
 
             {/* Center Main Axes */}
-            <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="2" />
-            <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255, 255, 255, 0.15)" strokeWidth="2" />
+            <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(16, 15, 17, 0.18)" strokeWidth="2" />
+            <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(16, 15, 17, 0.18)" strokeWidth="2" />
 
             {/* Axis Arrows and Labels */}
-            <text x="390" y="192" fill="#9ca3af" fontSize="9" fontFamily="Space Mono" textAnchor="end" letterSpacing="1">
+            <text x="390" y="192" fill="#5D5D5D" fontSize="9" fontFamily="Inter" textAnchor="end" letterSpacing="1">
               SOCIABILITY (Friendliness) →
             </text>
-            <text x="10" y="210" fill="#6B7280" fontSize="9" fontFamily="Space Mono" textAnchor="start" letterSpacing="1">
+            <text x="10" y="210" fill="#B4B4B4" fontSize="9" fontFamily="Inter" textAnchor="start" letterSpacing="1">
               ← LOW SOCIABILITY
             </text>
-            <text x="208" y="15" fill="#9ca3af" fontSize="9" fontFamily="Space Mono" textAnchor="start" letterSpacing="1">
+            <text x="208" y="15" fill="#5D5D5D" fontSize="9" fontFamily="Inter" textAnchor="start" letterSpacing="1">
               SOLIDARITY (Consensus) ↑
             </text>
-            <text x="208" y="390" fill="#6B7280" fontSize="9" fontFamily="Space Mono" textAnchor="start" letterSpacing="1">
+            <text x="208" y="390" fill="#B4B4B4" fontSize="9" fontFamily="Inter" textAnchor="start" letterSpacing="1">
               ↓ LOW SOLIDARITY
             </text>
 
@@ -239,9 +239,9 @@ export default function GoffeeJonesGrid({ tensionMode }) {
                     x={cx} 
                     y={cy - 12} 
                     fill={node.color} 
-                    fontSize="8" 
-                    fontFamily="Space Mono" 
-                    fontWeight="bold" 
+                    fontSize="8"
+                    fontFamily="Inter"
+                    fontWeight="bold"
                     textAnchor="middle"
                   >
                     {node.id === 'anthropic' ? 'Anthropic' : node.id.toUpperCase()}
@@ -256,7 +256,7 @@ export default function GoffeeJonesGrid({ tensionMode }) {
                 <animate attributeName="r" values="10;18;10" dur="2.5s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite" />
               </circle>
-              <circle r="6" fill={quadInfo.accentColor} stroke="#0B0F19" strokeWidth="2" />
+              <circle r="6" fill={quadInfo.accentColor} stroke="#FFFFFF" strokeWidth="2" />
             </g>
           </svg>
         </div>

@@ -65,7 +65,7 @@ export default function DesignMaturity({ tensionMode }) {
           key={scaleVal}
           points={coords}
           fill="none"
-          stroke="rgba(255, 255, 255, 0.05)"
+          stroke="rgba(16, 15, 17, 0.08)"
           strokeWidth="1"
         />
       );
@@ -83,7 +83,7 @@ export default function DesignMaturity({ tensionMode }) {
           y1={center}
           x2={x}
           y2={y}
-          stroke="rgba(255, 255, 255, 0.06)"
+          stroke="rgba(16, 15, 17, 0.1)"
           strokeWidth="1"
         />
       );
@@ -106,9 +106,9 @@ export default function DesignMaturity({ tensionMode }) {
           key={d.key}
           x={x}
           y={y}
-          fill="#9ca3af"
+          fill="#5D5D5D"
           fontSize="9"
-          fontFamily="Space Grotesk"
+          fontFamily="Work Sans"
           fontWeight="600"
           textAnchor={anchor}
         >
@@ -207,7 +207,7 @@ export default function DesignMaturity({ tensionMode }) {
             {[1, 2, 3, 4, 5].map((scale) => {
               const { y } = getCoordinates(scale, 0); // Straight UP
               return (
-                <text key={scale} x={center + 5} y={y + 3} fill="rgba(255, 255, 255, 0.15)" fontSize="8" fontFamily="Space Mono">
+                <text key={scale} x={center + 5} y={y + 3} fill="rgba(16, 15, 17, 0.3)" fontSize="8" fontFamily="Inter">
                   {scale}
                 </text>
               );
@@ -217,7 +217,7 @@ export default function DesignMaturity({ tensionMode }) {
             <polygon
               points={industryPoints}
               fill="none"
-              stroke="#3B82F6"
+              stroke="#5D5D5D"
               strokeWidth="1.5"
               strokeDasharray="4,4"
               opacity="0.6"
@@ -226,8 +226,8 @@ export default function DesignMaturity({ tensionMode }) {
             {/* Anthropic/Our Org Polygon (Solid Glowing Gold) */}
             <polygon
               points={anthropicPoints}
-              fill="rgba(217, 119, 6, 0.22)"
-              stroke="#D97706"
+              fill="rgba(20, 87, 204, 0.12)"
+              stroke="#1457CC"
               strokeWidth="2.5"
               className="transition-all duration-300"
             />
@@ -242,8 +242,8 @@ export default function DesignMaturity({ tensionMode }) {
                   cx={x}
                   cy={y}
                   r="4.5"
-                  fill="#FBBF24"
-                  stroke="#0B0F19"
+                  fill="#1457CC"
+                  stroke="#FFFFFF"
                   strokeWidth="1.5"
                   className="transition-all duration-300"
                 />

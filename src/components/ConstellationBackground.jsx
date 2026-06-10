@@ -65,7 +65,7 @@ export default function ConstellationBackground() {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(245, 235, 230, ${this.opacity})`;
+        ctx.fillStyle = `rgba(16, 15, 17, ${this.opacity * 0.3})`;
         ctx.fill();
       }
     }
@@ -77,7 +77,7 @@ export default function ConstellationBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = 'rgba(11, 15, 25, 1)';
+      ctx.fillStyle = '#FFFEFB';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
@@ -96,7 +96,7 @@ export default function ConstellationBackground() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(217, 119, 6, ${alpha})`;
+            ctx.strokeStyle = `rgba(20, 87, 204, ${alpha * 0.8})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -113,7 +113,7 @@ export default function ConstellationBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(245, 235, 230, ${alpha})`;
+            ctx.strokeStyle = `rgba(16, 15, 17, ${alpha * 0.5})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -138,11 +138,11 @@ export default function ConstellationBackground() {
       <canvas ref={canvasRef} className="constellation-canvas" />
       <div 
         className="constellation-glow-spot" 
-        style={{ top: '15%', left: '20%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(217, 119, 6, 0.08) 0%, transparent 70%)' }} 
+        style={{ top: '15%', left: '20%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(20, 87, 204, 0.05) 0%, transparent 70%)' }}
       />
       <div 
         className="constellation-glow-spot" 
-        style={{ bottom: '10%', right: '15%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%)' }} 
+        style={{ bottom: '10%', right: '15%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(254, 233, 231, 0.6) 0%, transparent 70%)' }}
       />
     </div>
   );

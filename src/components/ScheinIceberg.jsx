@@ -11,10 +11,10 @@ export default function ScheinIceberg({ tensionMode }) {
       depth: 'Visible (Above Water)',
       definition: 'The visible structures, processes, languages, physical space, and products of the organization.',
       dbKey: 'artifacts',
-      color: '#D97706', // Gold
+      color: '#1457CC', // Brand blue
       zOffsetNormal: 'translate3d(0, 0, 70px)',
       zOffsetHover: 'translate3d(0, 0, 100px)',
-      glowColor: 'rgba(217, 119, 6, 0.4)'
+      glowColor: 'rgba(20, 87, 204, 0.35)'
     },
     espoused: {
       id: 'espoused',
@@ -22,10 +22,10 @@ export default function ScheinIceberg({ tensionMode }) {
       depth: 'Sub-Surface (Semi-Visible)',
       definition: 'Stated goals, strategies, and operating philosophies. What the company explicitly says they prioritize.',
       dbKey: 'espousedValues',
-      color: '#F5EBE6', // Sand
+      color: '#5D5D5D', // Ink gray
       zOffsetNormal: 'translate3d(0, 0, 0px)',
       zOffsetHover: 'translate3d(0, 0, 30px)',
-      glowColor: 'rgba(245, 235, 230, 0.3)'
+      glowColor: 'rgba(93, 93, 93, 0.3)'
     },
     tacit: {
       id: 'tacit',
@@ -33,10 +33,10 @@ export default function ScheinIceberg({ tensionMode }) {
       depth: 'Deep Ocean (Invisible Core)',
       definition: 'Unconscious, taken-for-granted beliefs, perceptions, and thoughts that are the ultimate source of values and actions.',
       dbKey: 'tacitAssumptions',
-      color: '#3B82F6', // Blue
+      color: '#08195C', // Deep navy
       zOffsetNormal: 'translate3d(0, 0, -70px)',
       zOffsetHover: 'translate3d(0, 0, -40px)',
-      glowColor: 'rgba(59, 130, 246, 0.4)'
+      glowColor: 'rgba(8, 25, 92, 0.35)'
     }
   };
 
@@ -111,10 +111,10 @@ export default function ScheinIceberg({ tensionMode }) {
                   {/* Left Side Edge Panel (3D Depth) */}
                   <div 
                     className={`absolute left-0 bottom-0 top-0 w-[6px] origin-left rounded-l-md transition-all duration-300 ${
-                      tensionMode 
-                        ? 'bg-gradient-to-b from-red-500 to-orange-500' 
-                        : isSelected 
-                          ? 'bg-amber-400' 
+                      tensionMode
+                        ? 'bg-red-500'
+                        : isSelected
+                          ? 'bg-amber-400'
                           : 'bg-stone-800'
                     }`} 
                     style={{ transform: 'rotateY(-90deg) translateZ(0px)' }}
@@ -122,11 +122,11 @@ export default function ScheinIceberg({ tensionMode }) {
                   {/* Bottom Side Edge Panel (3D Depth) */}
                   <div 
                     className={`absolute right-0 bottom-0 left-0 h-[6px] origin-bottom rounded-b-md transition-all duration-300 ${
-                      tensionMode 
-                        ? 'bg-gradient-to-r from-orange-600 to-red-600' 
-                        : isSelected 
-                          ? 'bg-amber-500' 
-                          : 'bg-stone-900'
+                      tensionMode
+                        ? 'bg-red-500'
+                        : isSelected
+                          ? 'bg-amber-500'
+                          : 'bg-stone-800'
                     }`} 
                     style={{ transform: 'rotateX(-90deg) translateZ(0px)' }}
                   />
@@ -137,9 +137,9 @@ export default function ScheinIceberg({ tensionMode }) {
             {/* Core Vertical Connection Axis / Tension Core */}
             <div 
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-[200px] pointer-events-none transition-all duration-500 ${
-                tensionMode 
-                  ? 'bg-gradient-to-b from-red-500 via-orange-500 to-red-600 opacity-70 shadow-[0_0_15px_rgba(239,68,68,0.6)] animate-pulse' 
-                  : 'bg-gradient-to-b from-amber-500/20 via-stone-700/10 to-blue-500/20 opacity-30'
+                tensionMode
+                  ? 'bg-red-500 opacity-70 animate-pulse'
+                  : 'bg-stone-800 opacity-30'
               }`}
               style={{ transform: 'translate3d(0, 0, -80px) rotateX(-90deg)', height: '220px' }}
             />
