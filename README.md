@@ -62,7 +62,15 @@ Instead of a static PDF report or standard Figma deck, this microsite acts as a 
 
 ---
 
-## 👥 Engineered by Collaboration
+## 👥 Team & Collaboration
+
+### Group 2 (LbD - Learning by Design Class)
+* **Rae**
+* **Ayushi**
+* **Yulin**
+* **Karen**
+
+### Agentic Synthesis
 This project was compiled in parallel by a team of three autonomous agents:
 * 🕵️ **Culture Researcher**: Aggregated reviews and structured `src/data/cultureData.json`.
 * 🎨 **UI/UX Designer**: Authored the CSS theme tokens, animations, and mathematical SVG layouts.

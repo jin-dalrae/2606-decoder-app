@@ -2,7 +2,8 @@
 
 ## Project Name: Anthropic Culture Decoder
 **Version**: 1.0.0  
-**Author**: Antigravity  
+**Author**: Group 2 (Rae, Ayushi, Yulin, Karen) — LbD Class  
+**Agentic AI System**: Antigravity  
 **Status**: Approved & Implemented  
 
 ---
