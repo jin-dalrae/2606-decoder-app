@@ -5,6 +5,8 @@ import ScheinIceberg from './components/ScheinIceberg';
 import GoffeeJonesGrid from './components/GoffeeJonesGrid';
 import DesignMaturity from './components/DesignMaturity';
 import EvidenceHub from './components/EvidenceHub';
+import SelectionVettingPage from './components/SelectionVettingPage';
+import ProgressionRewardPage from './components/ProgressionRewardPage';
 
 function App() {
   const [tensionMode, setTensionMode] = useState(false);
@@ -23,62 +25,10 @@ function App() {
   const renderContent = () => {
     switch (activePage) {
       case 'selection':
-        return (
-          <div className="app-main-content">
-            <section className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 01 / Recruitment</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Selection & Vetting</h2>
-              <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-                Dissects how Anthropic selects talent, checking for extreme technical depth and deep mission alignment, rejecting candidates who prioritize raw commercial profit over safety ethics.
-              </p>
-            </section>
-            
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Schein's Iceberg: Selection Context</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <ScheinIceberg tensionMode={tensionMode} pillar="selection" />
-            </section>
-
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Qualitative Evidence Feed</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <EvidenceHub tensionMode={tensionMode} pillar="selection" />
-            </section>
-          </div>
-        );
+        return <SelectionVettingPage tensionMode={tensionMode} />;
 
       case 'progression':
-        return (
-          <div className="app-main-content">
-            <section className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">Pillar 02 / Incentives</span>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white m-0">Progression & Reward</h2>
-              <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-                Examines what behaviors actually get rewarded at Anthropic (such as sprinting for capabilities and safety milestones under existential urgency) vs. their espoused policies of balance.
-              </p>
-            </section>
-
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Schein's Iceberg: Rewards Context</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <ScheinIceberg tensionMode={tensionMode} pillar="progression" />
-            </section>
-
-            <section className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-stone-500">Qualitative Evidence Feed</span>
-                <span className="h-[1px] flex-grow bg-stone-900" />
-              </div>
-              <EvidenceHub tensionMode={tensionMode} pillar="progression" />
-            </section>
-          </div>
-        );
+        return <ProgressionRewardPage tensionMode={tensionMode} />;
 
       case 'power':
         return (

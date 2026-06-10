@@ -3,8 +3,8 @@ import cultureData from '../data/cultureData.json';
 
 export default function EvidenceHub({ tensionMode, pillar = 'all' }) {
   const feedPillarMapping = {
-    selection: ['feed-03', 'feed-09', 'feed-14'],
-    progression: ['feed-03', 'feed-05', 'feed-13'],
+    selection: ['feed-03', 'feed-09', 'feed-14', 'feed-sel-01', 'feed-sel-02', 'feed-sel-03', 'feed-sel-04', 'feed-sel-05', 'feed-sel-06'],
+    progression: ['feed-03', 'feed-05', 'feed-13', 'feed-prg-01', 'feed-prg-02', 'feed-prg-03', 'feed-prg-04', 'feed-prg-05', 'feed-prg-06'],
     power: ['feed-02', 'feed-07', 'feed-09', 'feed-10', 'feed-11', 'feed-15', 'feed-16'],
     social: ['feed-01', 'feed-04', 'feed-06', 'feed-08', 'feed-12', 'feed-13', 'feed-15']
   };
