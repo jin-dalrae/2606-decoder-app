@@ -12,8 +12,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       definition: 'The visible structures, processes, languages, physical space, and products of the organization.',
       dbKey: 'artifacts',
       color: '#1457CC', // Brand blue
-      zOffsetNormal: 'translate3d(0, 0, 70px)',
-      zOffsetHover: 'translate3d(0, 0, 100px)',
+      zOffsetNormal: 'translate3d(0, -35px, 60px)',
+      zOffsetHover: 'translate3d(0, -35px, 95px)',
+      zIndex: 30,
       glowColor: 'rgba(20, 87, 204, 0.35)'
     },
     espoused: {
@@ -23,8 +24,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       definition: 'Stated goals, strategies, and operating philosophies. What the company explicitly says they prioritize.',
       dbKey: 'espousedValues',
       color: '#5D5D5D', // Ink gray
-      zOffsetNormal: 'translate3d(0, 0, 0px)',
-      zOffsetHover: 'translate3d(0, 0, 30px)',
+      zOffsetNormal: 'translate3d(0, 0px, 0px)',
+      zOffsetHover: 'translate3d(0, 0px, 35px)',
+      zIndex: 20,
       glowColor: 'rgba(93, 93, 93, 0.3)'
     },
     tacit: {
@@ -34,8 +36,9 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       definition: 'Unconscious, taken-for-granted beliefs, perceptions, and thoughts that are the ultimate source of values and actions.',
       dbKey: 'tacitAssumptions',
       color: '#08195C', // Deep navy
-      zOffsetNormal: 'translate3d(0, 0, -70px)',
-      zOffsetHover: 'translate3d(0, 0, -40px)',
+      zOffsetNormal: 'translate3d(0, 35px, -60px)',
+      zOffsetHover: 'translate3d(0, 35px, -25px)',
+      zIndex: 10,
       glowColor: 'rgba(8, 25, 92, 0.35)'
     }
   };
@@ -100,8 +103,28 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
       {/* 3D Iceberg Interactive Stack */}
       <div className="flex-1 flex flex-col justify-center items-center py-8 relative min-h-[350px] select-none">
         
+        {/* Interactive Staggered Tab Navigation Fallback */}
+        <div className="flex gap-2.5 mb-6 z-10 flex-wrap justify-center">
+          {Object.values(layerDefinitions).map((layer, index) => {
+            const isSelected = selectedLayer === layer.id;
+            return (
+              <button
+                key={layer.id}
+                onClick={() => setSelectedLayer(layer.id)}
+                className={`glass-btn text-[11px] py-1.5 px-3.5 rounded-full transition-all duration-300 font-mono tracking-wide ${
+                  isSelected 
+                    ? 'border-[#1457CC] bg-[#1457CC] text-white shadow-[0_4px_12px_rgba(20,87,204,0.25)]' 
+                    : 'border-stone-300 text-stone-600 bg-white hover:border-[#1457CC] hover:text-[#1457CC]'
+                }`}
+              >
+                L0{index + 1}: {layer.title.split(' ')[0]}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Dynamic Waterline Graphic */}
-        <div className="absolute w-full border-t border-dashed border-sky-400/40 top-[42%] left-0 flex justify-between px-4 pointer-events-none">
+        <div className="absolute w-full border-t border-dashed border-sky-400/40 top-[48%] left-0 flex justify-between px-4 pointer-events-none">
           <span className="text-[10px] font-mono text-sky-400/60 uppercase">Water Level ~ Visible Boundary</span>
           <span className="text-[10px] font-mono text-sky-400/60 uppercase">Sub-surface</span>
         </div>
@@ -128,10 +151,10 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
               const currentTransform = isSelected ? layer.zOffsetHover : layer.zOffsetNormal;
               
               let borderStyle = tensionMode 
-                ? 'border-red-500/50 bg-red-950/20 shadow-[0_0_20px_rgba(239,68,68,0.25)]' 
+                ? 'border-red-500/50 bg-red-950/20 shadow-[0_0_20px_rgba(239,68,68,0.25)] hover:border-red-400' 
                 : isSelected 
-                  ? 'border-amber-400 bg-slate-900/90 shadow-[0_15px_30px_rgba(0,0,0,0.65)]' 
-                  : 'border-stone-800 bg-slate-950/70 hover:border-stone-700 shadow-[0_5px_15px_rgba(0,0,0,0.4)]';
+                  ? 'border-[#1457CC] bg-[#FBFAF7] shadow-[0_15px_30px_rgba(20,87,204,0.15)]' 
+                  : 'border-stone-300 bg-[#FFFEFB]/90 hover:border-stone-400 hover:shadow-[0_8px_18px_rgba(0,0,0,0.08)]';
 
               return (
                 <div
@@ -142,14 +165,15 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
                     transform: currentTransform,
                     transformStyle: 'preserve-3d',
                     backdropFilter: 'blur(10px)',
-                    WebkitBackdropFilter: 'blur(10px)'
+                    WebkitBackdropFilter: 'blur(10px)',
+                    zIndex: isSelected ? 40 : layer.zIndex
                   }}
                 >
                   <span className="text-[9px] font-mono tracking-widest text-stone-500 uppercase mb-1">
                     Level 0{index + 1}
                   </span>
                   <span className={`text-sm font-semibold tracking-wide transition-colors duration-300 ${
-                    isSelected ? 'text-amber-400' : 'text-stone-200'
+                    isSelected ? 'text-[#1457CC]' : 'text-stone-800'
                   }`}>
                     {layer.title}
                   </span>
@@ -163,8 +187,8 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
                       tensionMode
                         ? 'bg-red-500'
                         : isSelected
-                          ? 'bg-amber-400'
-                          : 'bg-stone-800'
+                          ? 'bg-[#1457CC]'
+                          : 'bg-stone-300'
                     }`} 
                     style={{ transform: 'rotateY(-90deg) translateZ(0px)' }}
                   />
@@ -174,8 +198,8 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
                       tensionMode
                         ? 'bg-red-500'
                         : isSelected
-                          ? 'bg-amber-500'
-                          : 'bg-stone-800'
+                          ? 'bg-[#1457CC]'
+                          : 'bg-stone-300'
                     }`} 
                     style={{ transform: 'rotateX(-90deg) translateZ(0px)' }}
                   />
@@ -188,7 +212,7 @@ export default function ScheinIceberg({ tensionMode, pillar = 'all' }) {
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-[200px] pointer-events-none transition-all duration-500 ${
                 tensionMode
                   ? 'bg-red-500 opacity-70 animate-pulse'
-                  : 'bg-stone-800 opacity-30'
+                  : 'bg-stone-300 opacity-40'
               }`}
               style={{ transform: 'translate3d(0, 0, -80px) rotateX(-90deg)', height: '220px' }}
             />
