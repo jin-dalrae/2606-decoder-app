@@ -492,12 +492,194 @@ function PowerScheinBreakdown() {
   );
 }
 
+// ─── Internal vs. External Governance Matrix Component ──────────────────────
+const GOVERNANCE_DIMENSIONS = {
+  internal: {
+    title: 'Internal Governance Mechanisms',
+    subtitle: 'Authority systems and operational balances managed inside the lab',
+    color: 'var(--brand-primary)',
+    items: [
+      {
+        title: 'Safety Veto Pipeline (RSP)',
+        badge: 'Operational Veto',
+        description: 'Under the Responsible Scaling Policy (currently v3.3), safety researchers evaluate if models exceed ASL-3 capability levels (CBRN threat, autonomous cyberattack, replication).',
+        fact: 'Managed by RSO Jared Kaplan. Escalates Risk Reports directly to the CEO, giving safety teams a veto over model deployments.',
+        tension: 'Pause Dilution: Sprints or competitor announcements pressure RSO to bypass pauses via risk-mitigation arguments.'
+      },
+      {
+        title: 'Sibling-Consensus Flat Structure',
+        badge: 'Cultural Power',
+        description: 'Founded on Dario & Daniela Amodei\'s 40-year co-leadership, the organization is intentionally flat, rejecting corporate hierarchies to support academic open debates.',
+        fact: 'Decisions are reached by peer consensus. Whistleblower channels like EthicsPoint NAVEX allow direct escalation of safety concerns.',
+        tension: 'Consensus Gridlock: Without traditional management, product or policy disagreements can lead to weeks of execution delays.'
+      },
+      {
+        title: 'Researcher Hegemony vs. Product Managers',
+        badge: 'Internal Authority',
+        description: 'Power is heavily skewed toward alignment researchers (the intellectual elite). Product Managers must get safety clearance to ship API updates.',
+        fact: 'Researchers hold de facto vetoes over product roadmaps, leaving PMs with market delivery quotas but no authority to schedule releases.',
+        tension: 'Execution Friction: Disempowered PMs face delays trying to make researchers stabilize APIs or optimize user responsiveness.'
+      }
+    ]
+  },
+  external: {
+    title: 'External Governance & Legal Checks',
+    subtitle: 'Independent structures and capital pressures outside the lab',
+    color: 'var(--brand-primary-dark)',
+    items: [
+      {
+        title: 'Long-Term Benefit Trust (LTBT)',
+        badge: 'Fiduciary Check',
+        description: 'An independent Delaware purpose trust holding all Class T Common Stock, designed to elect a majority of the Board of Directors over time.',
+        fact: 'Trustees are financially disinterested (no equity) with staggered terms. Neil Buddy Shah (Chair), Richard Fontaine, and Mariano-Florentino Cuéllar.',
+        tension: 'Override Clause: Stockholders retain a failsafe to dismantle or override the LTBT with a 75% Board + outstanding voting stock agreement.'
+      },
+      {
+        title: 'Public Benefit Corporation (PBC) Charter',
+        badge: 'Legal Shield',
+        description: 'Anthropic is incorporated in Delaware as a PBC, legally mandating the Board of Directors to balance shareholder value with public benefit.',
+        fact: 'The charter protects directors from fiduciary lawsuits when choosing safety pauses or compute delays over short-term profits.',
+        tension: 'Charter vs. Cash: While legally protected, the charter cannot stop compute liabilities or cash-flow demands from forcing monetization.'
+      },
+      {
+        title: 'Capital Partners & Compute Mortgages',
+        badge: 'Market Pressure',
+        description: 'Massive venture backing from Google ($2B) and Amazon ($4B) combined with $100B+ long-term cloud commitments to AWS and GCP.',
+        fact: 'Venture investments are structured as non-voting preferred stock to prevent hostile board takeovers, but carry heavy compute quotas.',
+        tension: 'Compute Trap: Pre-training requires exponential capital, locking the lab into compute mortgages that drive commercial pressure.'
+      }
+    ]
+  }
+};
+
+function GovernanceDimensionsMatrix() {
+  const [activeTab, setActiveTab] = useState('internal');
+  const current = GOVERNANCE_DIMENSIONS[activeTab];
+
+  return (
+    <div className="glass-panel" style={{ padding: '32px' }}>
+      <div style={{ marginBottom: '24px' }}>
+        <span style={styles.eyebrow}>INTERNAL VS. EXTERNAL GOVERNANCE</span>
+        <h3 style={styles.cardTitle}>Governance Dimensions Matrix</h3>
+        <p style={styles.cardDesc}>
+          Deconstruct how Anthropic\'s safety mission is governed internally through researcher-led vetoes and externally through the LTBT and Delaware PBC charters.
+        </p>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+        {Object.keys(GOVERNANCE_DIMENSIONS).map((key) => {
+          const tab = GOVERNANCE_DIMENSIONS[key];
+          const isActive = activeTab === key;
+          return (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              style={{
+                padding: '10px 18px',
+                borderRadius: 'var(--r-sm)',
+                textAlign: 'left',
+                cursor: 'pointer',
+                border: `1.5px solid ${isActive ? tab.color : 'var(--border-default)'}`,
+                background: isActive ? 'var(--bg-muted)' : 'transparent',
+                transition: 'all 0.2s var(--ease-settle)',
+                outline: 'none',
+              }}
+            >
+              <div style={{ fontSize: '12px', fontWeight: 700, color: isActive ? tab.color : 'var(--text-secondary)', fontFamily: 'var(--font-sans)' }}>
+                {tab.title}
+              </div>
+              <div style={{ fontSize: '9px', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '2px', fontFamily: 'var(--font-mono)' }}>
+                {key === 'internal' ? 'Operational & Cultural' : 'Legal & Financial Checks'}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        {current.items.map((item, idx) => (
+          <div
+            key={idx}
+            style={{
+              padding: '20px',
+              borderRadius: 'var(--r-md)',
+              background: 'var(--bg-default)',
+              border: '1px solid var(--border-default)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              transition: 'var(--transition-smooth)',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', margin: 0, fontFamily: 'var(--font-sans)' }}>
+                  {item.title}
+                </h4>
+                <span style={{
+                  fontSize: '8.5px',
+                  fontFamily: 'var(--font-mono)',
+                  color: current.color,
+                  background: `${current.color}10`,
+                  padding: '2px 6px',
+                  borderRadius: '10px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em'
+                }}>
+                  {item.badge}
+                </span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 12px 0', fontFamily: 'var(--font-sans)' }}>
+                {item.description}
+              </p>
+              <div style={{
+                fontSize: '11px',
+                color: 'var(--text-primary)',
+                background: 'var(--bg-muted)',
+                padding: '10px 12px',
+                borderRadius: 'var(--r-sm)',
+                border: '1px solid var(--border-default)',
+                marginBottom: '12px',
+                fontFamily: 'var(--font-sans)'
+              }}>
+                <strong style={{ color: current.color, display: 'block', fontSize: '9px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '2px' }}>
+                  Factual Context
+                </strong>
+                {item.fact}
+              </div>
+            </div>
+            <div style={{
+              fontSize: '11px',
+              color: 'var(--accent-orange)',
+              background: 'var(--accent-red-wash)',
+              padding: '8px 10px',
+              borderRadius: 'var(--r-sm)',
+              border: '1px solid var(--accent-red-border)',
+              fontFamily: 'var(--font-sans)',
+              lineHeight: 1.4
+            }}>
+              <strong style={{ display: 'block', fontSize: '9px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '2px' }}>
+                Strategic Tension
+              </strong>
+              {item.tension}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── Main export ──────────────────────────────────────────────────────────────
 const STATS = [
   { label: 'LTBT Trustees',        value: 5,   suffix: '',    prefix: '',   decimals: 0, note: 'Independent Check' },
   { label: 'Veto Override Vote',   value: 75,  suffix: '%',   prefix: '',   decimals: 0, note: 'Stockholders veto' },
   { label: 'Compute Commitments',  value: 100, suffix: 'B+',  prefix: '$',  decimals: 0, note: 'Cloud partner debt' },
-  { label: 'Active Safety Level',  value: 3,   suffix: '',    prefix: 'ASL-', decimals: 0, note: 'v3.2 containment' },
+  { label: 'Active Safety Level',  value: 3,   suffix: '',    prefix: 'ASL-', decimals: 0, note: 'v3.3 containment' },
 ];
 
 export default function PowerGovernancePage({ tensionMode }) {
@@ -545,6 +727,15 @@ export default function PowerGovernancePage({ tensionMode }) {
           <div style={styles.hairline} />
         </div>
         <GovernanceFlowDiagram />
+      </section>
+
+      {/* Internal & External Governance Matrix */}
+      <section>
+        <div style={styles.sectionDivider}>
+          <span style={styles.sectionLabel}>Internal & External Dimensions</span>
+          <div style={styles.hairline} />
+        </div>
+        <GovernanceDimensionsMatrix />
       </section>
 
       {/* Compute Mortgage Escalator */}

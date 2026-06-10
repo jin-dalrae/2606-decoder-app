@@ -45,7 +45,13 @@ const WORKSPACE_ZONES = {
     title: 'The Greenhouse Workspace & Library',
     focus: 'Physical Workspace Design (Howard St. SF)',
     color: 'var(--brand-primary)',
-    body: 'Anthropic\'s head office is designed to foster a botanical library atmosphere. Extensive indoor plantings (monsteras, fiddle-leaf figs, pothos) and wood-paneled meeting greenhouses reduce sensory stimulation, grounding researchers physically during intense pre-training sprints.',
+    body: 'Anthropic\'s SF campus spans nearly 1 million square feet across downtown SoMa (known as "AI Alley"), including 300, 400, and 500 Howard St. The office features open-plan layouts with sunlit flex-desks, dedicated quiet zones, and extensive plant installations (150+ mature monsteras, pothos, fiddle-leaf figs). Facilities include rest/wellness rooms and fitness gyms to support high-intensity pre-training cycles.',
+  },
+  culinary: {
+    title: 'Culinary Program & Beverage Stations',
+    focus: 'Gourmet In-House Dining Experience',
+    color: 'var(--brand-primary-dark)',
+    body: 'To reduce daily office friction, Anthropic provides an in-house gourmet dining program. Fully-stocked hot lunch bars serve items like lamb chops, farro, and fresh grains. Dedicated beverage bars feature locally-roasted espresso, custom teas, and carbonated drink stations, fostering informal scientific pairing during meals.',
   },
   vend: {
     title: 'Project Vend: Autonomous Snack Shop',
@@ -94,20 +100,27 @@ function WorkspaceZonalMap() {
 
             {/* Greenhouse Library Zone */}
             <g onClick={() => setSelectedZone('greenhouse')} style={{ cursor: 'pointer' }}>
-              <rect x="20" y="20" width="130" height="70" rx="6"
+              <rect x="20" y="20" width="130" height="40" rx="6"
                 fill={selectedZone === 'greenhouse' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
                 stroke={selectedZone === 'greenhouse' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="85" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Greenhouse Library</text>
-              <text x="85" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>🌿 Biophilic Lounge</text>
+              <text x="85" y="44" textAnchor="middle" style={{ fontSize: '8.5px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Greenhouse Library</text>
+            </g>
+
+            {/* Culinary/Food Zone */}
+            <g onClick={() => setSelectedZone('culinary')} style={{ cursor: 'pointer' }}>
+              <rect x="20" y="65" width="130" height="30" rx="6"
+                fill={selectedZone === 'culinary' ? 'rgba(8,25,92,0.06)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'culinary' ? 'var(--brand-primary-dark)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="85" y="83" textAnchor="middle" style={{ fontSize: '8.5px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Culinary & Cafe</text>
             </g>
 
             {/* Brand/Typography Studio */}
             <g onClick={() => setSelectedZone('brand')} style={{ cursor: 'pointer' }}>
-              <rect x="170" y="20" width="130" height="70" rx="6"
-                fill={selectedZone === 'brand' ? 'rgba(8,25,92,0.06)' : 'var(--bg-default)'}
-                stroke={selectedZone === 'brand' ? 'var(--brand-primary-dark)' : 'var(--border-default)'} strokeWidth="1.5" />
-              <text x="235" y="50" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Typography & Brand</text>
-              <text x="235" y="62" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>✍️ Serif/Clay Design</text>
+              <rect x="170" y="20" width="130" height="75" rx="6"
+                fill={selectedZone === 'brand' ? 'rgba(20,87,204,0.06)' : 'var(--bg-default)'}
+                stroke={selectedZone === 'brand' ? 'var(--brand-primary)' : 'var(--border-default)'} strokeWidth="1.5" />
+              <text x="235" y="52" textAnchor="middle" style={{ fontSize: '9px', fontWeight: 700, fill: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>Typography & Brand</text>
+              <text x="235" y="64" textAnchor="middle" style={{ fontSize: '7px', fill: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>✍️ Serif/Clay Design</text>
             </g>
 
             {/* Project Vend Zone */}
@@ -138,6 +151,7 @@ function WorkspaceZonalMap() {
             border: '1px solid var(--border-default)',
             borderLeft: `4px solid ${current.color}`,
             transition: 'var(--transition-smooth)',
+            marginBottom: '12px',
           }}>
             <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: current.color, letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '4px', fontWeight: 700 }}>
               {current.focus}
@@ -148,6 +162,22 @@ function WorkspaceZonalMap() {
             <p style={{ fontSize: '12px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
               {current.body}
             </p>
+          </div>
+
+          {/* Remote work and offsites details card */}
+          <div style={{
+            padding: '16px 20px', borderRadius: 'var(--r-md)',
+            background: 'var(--bg-default)',
+            border: '1px solid var(--border-default)',
+            fontSize: '11.5px', color: 'var(--text-secondary)', lineHeight: 1.6, fontFamily: 'var(--font-sans)'
+          }}>
+            <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+              📍 Remote Ratio & Meeting Cadence:
+            </strong>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '16px', margin: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <li><strong>Remote Ratio:</strong> Under 10%. Strongly hybrid location-based model requiring 5 days/week in-office for core pre-training, safety, and infra roles in SF.</li>
+              <li><strong>Meeting Frequencies:</strong> Weekly research circles, weekly all-hands company updates led by Daniela/Dario, and annual company offsites functioning as emotional "mission renewal rituals."</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -554,6 +584,262 @@ function SocialScheinBreakdown() {
   );
 }
 
+// ─── Daily Operations, Space & Hybrid Rituals Component ─────────────────────
+const DAILY_OPERATIONS = {
+  culinary: {
+    id: 'culinary',
+    icon: '🍽️',
+    title: 'Culinary & Beverages',
+    subtitle: 'High-end dining to minimize daily friction',
+    color: 'var(--brand-primary)',
+    metrics: [
+      { label: 'Subsidy Program', value: '100% Free' },
+      { label: 'Hot Lunch/Dinner', value: 'Gourmet Buffets' },
+      { label: 'Beverages', value: 'Espresso + Yerba' }
+    ],
+    details: [
+      'Gourmet lunch and dinner buffet lines serving healthy grains, roasted lamb chops, farro, and fresh local organic produce.',
+      'Espresso bars with locally-roasted beans, specialized loose-leaf teas, and carbonated drink tap stations.',
+      'Fridges stocked with energy drinks, Yerba Mate, and protein snacks—historically tied to the employee-run "Project Vend" convenience shop sandbox led by the Claudius AI agent.'
+    ],
+    tension: {
+      title: 'The Culinary Retention Loop',
+      body: 'Providing free high-end gourmet meals eliminates the need for developers to leave the campus, aligning eating schedules with extended desk hours and late-night pre-training sprints.'
+    },
+    quote: {
+      text: 'The food is fantastic... but the physical environment says "slow down and think" while the Slack notifications say "we need to ship this yesterday."',
+      source: 'Senior Platform Engineer, Glassdoor'
+    }
+  },
+  campus: {
+    id: 'campus',
+    icon: '🏢',
+    title: 'Office Footprint & Space',
+    subtitle: '1 Million square foot downtown SF presence',
+    color: 'var(--brand-primary-dark)',
+    metrics: [
+      { label: 'Campus Size', value: '1M Sq. Ft.' },
+      { label: 'Core Buildings', value: '300, 400, & 500 Howard' },
+      { label: 'Layout Vibe', value: 'Botanical Library' }
+    ],
+    details: [
+      'Multi-building campus located in downtown San Francisco\'s SoMa district ("AI Alley").',
+      'Occupies 500 Howard St (Slack\'s former HQ) and 300 Howard St (landmark 25-story office tower).',
+      'Workspace features open-plan layout rooms with custom wood paneling, large physical whiteboards, and quiet writing desks.'
+    ],
+    tension: {
+      title: 'Botanical Library vs. Cluster Sprints',
+      body: 'The botanical library aesthetic is designed to ground developers in a thoughtful, academic environment, contrasting with the high-velocity, compute-locked pressure of frontier model development.'
+    },
+    quote: {
+      text: 'Anthropic is rebuilding San Francisco\'s tech core, but it\'s doing so with an environment that feels more like a botanical library than a software factory.',
+      source: 'San Francisco Business Times, April 2026'
+    }
+  },
+  wellness: {
+    id: 'wellness',
+    icon: '🌿',
+    title: 'Rest Areas & Biophilia',
+    subtitle: 'Grounded environments to mitigate screen fatigue',
+    color: 'var(--accent-orange)',
+    metrics: [
+      { label: 'Greenery', value: '150+ Mature Plants' },
+      { label: 'Rest Facilities', value: 'Quiet & Wellness Rooms' },
+      { label: 'Active Support', value: 'Gyms & $200 Stipend' }
+    ],
+    details: [
+      'Over 150+ mature plants (monstera, fiddle-leaf figs, pothos) draping from office shelves to lower workplace blood pressure.',
+      'Dedicated quiet zones, rest/wellness rooms, nap pods, and gym facilities for developers working late pre-training shifts.',
+      'In-office gym facilities and a $200/month wellness stipend to support physical recovery.'
+    ],
+    tension: {
+      title: 'Biophilia as a Stress Buffer',
+      body: 'The calming plants and cozy rest areas serve as vital support systems, but they also act as a physical buffer that masks the high-intensity 24/7 on-call schedules and constant server alarms.'
+    },
+    quote: {
+      text: 'The office feels like a greenhouse and gives this calm, low-ego, academic vibe that makes you forget you\'re in the middle of a high-pressure AI race.',
+      source: 'Glassdoor Review'
+    }
+  },
+  cadence: {
+    id: 'cadence',
+    icon: '📅',
+    title: 'Remote Ratio & Cadence',
+    subtitle: 'Highly localized collaboration rules',
+    color: 'var(--brand-primary)',
+    metrics: [
+      { label: 'Remote Ratio', value: '< 10% (Office-First)' },
+      { label: 'Office Cadence', value: '5 Days/Week Core' },
+      { label: 'Rituals', value: 'Weekly Circles & Updates' }
+    ],
+    details: [
+      'Strict office-first model with less than 10% remote ratio. Core pre-training, infra, and safety roles are expected in-office 5 days a week in SF.',
+      'Weekly research circles where preprints and safety evaluations are peer-reviewed in open consensus discussions.',
+      'Weekly company-wide all-hands updates led directly by Dario and Daniela Amodei, and annual offsites acting as emotional "mission renewal rituals."'
+    ],
+    tension: {
+      title: 'High Sociability vs. Consensus Gridlock',
+      body: 'The requirement to meet in person and resolve disputes through sibling-modeled consensus builds deep personal trust, but it also creates decision-making bottlenecks where alignment debates drag on.'
+    },
+    quote: {
+      text: 'The flat structure means you can pitch an idea directly to Dario or Daniela and have it greenlit... but it also means decisions can drag out for weeks while teams debate.',
+      source: 'MTS, Security Engineering, Glassdoor'
+    }
+  }
+};
+
+function DailyOperationsPanel() {
+  const [activeTab, setActiveTab] = React.useState('culinary');
+  const current = DAILY_OPERATIONS[activeTab];
+
+  return (
+    <div className="glass-panel" style={{ padding: '32px' }}>
+      <div style={{ marginBottom: '24px' }}>
+        <span style={styles.eyebrow}>DAILY LIFE & RITUALS</span>
+        <h3 style={styles.cardTitle}>Daily Operations & Hybrid Workspace</h3>
+        <p style={styles.cardDesc}>
+          Explore how Anthropic structures its physical campus, remote work policies, and employee care rituals to balance extreme pre-training pressures.
+        </p>
+      </div>
+
+      <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
+        {/* Left Side: Category Tabs List */}
+        <div style={{ flex: '1 1 240px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {Object.values(DAILY_OPERATIONS).map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  padding: '14px 18px',
+                  borderRadius: 'var(--r-md)',
+                  border: `1.5px solid ${isActive ? tab.color : 'var(--border-default)'}`,
+                  background: isActive ? `${tab.color}05` : 'transparent',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s var(--ease-settle)',
+                  boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.04)' : 'none',
+                  outline: 'none',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                  <span style={{ fontSize: '18px' }}>{tab.icon}</span>
+                  <span style={{
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    color: isActive ? tab.color : 'var(--text-primary)',
+                    fontFamily: 'var(--font-sans)',
+                  }}>
+                    {tab.title}
+                  </span>
+                </div>
+                <span style={{
+                  fontSize: '11px',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-sans)',
+                  marginLeft: '26px'
+                }}>
+                  {tab.subtitle}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right Side: Detailed Card View */}
+        <div style={{ flex: '2 1 400px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Header & Subtitle */}
+          <div style={{ borderBottom: '1px solid var(--border-default)', paddingBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
+              <span style={{ fontSize: '24px' }}>{current.icon}</span>
+              <h4 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)', margin: 0, fontFamily: 'var(--font-sans)' }}>
+                {current.title}
+              </h4>
+            </div>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: 0, fontFamily: 'var(--font-sans)' }}>
+              {current.subtitle}
+            </p>
+          </div>
+
+          {/* Key Metrics Cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px' }}>
+            {current.metrics.map((m, idx) => (
+              <div key={idx} style={{
+                padding: '12px 14px',
+                borderRadius: 'var(--r-sm)',
+                background: 'var(--bg-muted)',
+                border: '1px solid var(--border-default)',
+                textAlign: 'center'
+              }}>
+                <div style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '4px', letterSpacing: '0.04em' }}>
+                  {m.label}
+                </div>
+                <div style={{ fontSize: '13px', fontWeight: 800, color: current.color, fontFamily: 'var(--font-sans)' }}>
+                  {m.value}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Details Bullet List */}
+          <div>
+            <h5 style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.04em' }}>
+              Operational Details
+            </h5>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '18px', margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {current.details.map((d, idx) => (
+                <li key={idx} style={{ fontSize: '12.5px', color: 'var(--text-secondary)', lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Underlying Cultural Tension Box */}
+          <div style={{
+            padding: '16px 18px',
+            borderRadius: 'var(--r-md)',
+            background: 'var(--accent-red-wash)',
+            border: '1px solid var(--accent-red-border)',
+            borderLeft: `4px solid var(--accent-orange)`
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+              <span style={{ fontSize: '13px' }}>⚠️</span>
+              <strong style={{ fontSize: '12px', color: 'var(--accent-orange)', fontFamily: 'var(--font-sans)', fontWeight: 700 }}>
+                {current.tension.title} (Cultural Tension)
+              </strong>
+            </div>
+            <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, fontFamily: 'var(--font-sans)' }}>
+              {current.tension.body}
+            </p>
+          </div>
+
+          {/* Employee Quote Panel */}
+          <div style={{
+            padding: '14px 16px',
+            borderRadius: 'var(--r-sm)',
+            background: 'var(--bg-default)',
+            border: '1px solid var(--border-default)',
+            borderLeft: `3px solid ${current.color}`,
+            fontStyle: 'italic'
+          }}>
+            <p style={{ fontSize: '11.5px', color: 'var(--text-primary)', margin: '0 0 6px 0', lineHeight: 1.55, fontFamily: 'var(--font-sans)' }}>
+              "{current.quote.text}"
+            </p>
+            <div style={{ fontSize: '10px', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', textAlign: 'right', fontWeight: 600 }}>
+              — {current.quote.source}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main export ──────────────────────────────────────────────────────────────
 const STATS = [
   { label: 'SF Plant Count',       value: 150, suffix: '+',   prefix: '',   decimals: 0, note: 'Biophilic Greens' },
@@ -607,6 +893,15 @@ export default function SocialRitualsPage({ tensionMode }) {
           <div style={styles.hairline} />
         </div>
         <WorkspaceZonalMap />
+      </section>
+
+      {/* Daily Operations, Space & Hybrid Rituals */}
+      <section>
+        <div style={styles.sectionDivider}>
+          <span style={styles.sectionLabel}>Daily Operations & Spatial Rituals</span>
+          <div style={styles.hairline} />
+        </div>
+        <DailyOperationsPanel />
       </section>
 
       {/* Existential Burnout Dynamics Dial */}
