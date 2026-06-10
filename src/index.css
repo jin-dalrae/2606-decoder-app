@@ -379,6 +379,91 @@ header.sticky {
   background: rgba(255, 254, 251, 0.88);
 }
 
+/* ============================================================
+   HERO — finished, centered composition (logo / headline /
+   subtitle / CTAs). Matches homepage_review.html locked hero.
+   ============================================================ */
+.hero {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-card);
+  padding: 88px 48px 92px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin-bottom: 54px;
+}
+
+.hero-logo svg {
+  display: block;
+}
+
+.hero-logo .hero-wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 27px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  max-width: 880px;
+  margin: 0 auto;
+  /* override the global h1/h2 metallic gradient — solid ink here */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.hero-subtitle {
+  margin: 24px auto 0;
+  max-width: 540px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.hero-cta {
+  margin-top: 36px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-cta .glass-btn {
+  font-size: 0.875rem;
+  padding: 13px 26px;
+}
+
+@media (max-width: 680px) {
+  .hero {
+    padding: 60px 24px 64px;
+  }
+  .hero-logo {
+    margin-bottom: 38px;
+  }
+}
+
 /* Print Stylesheet overrides for clean formatting */
 @media print {
   body {

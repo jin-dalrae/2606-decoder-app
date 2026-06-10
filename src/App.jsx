@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ConstellationBackground from './components/ConstellationBackground';
-import Header from './components/Header';
+import Hero from './components/Hero';
 import ScheinIceberg from './components/ScheinIceberg';
 import GoffeeJonesGrid from './components/GoffeeJonesGrid';
 import DesignMaturity from './components/DesignMaturity';
@@ -16,25 +16,12 @@ function App() {
 
       {/* Main Layout Content */}
       <main className="w-full flex-grow flex flex-col gap-10">
-        
-        {/* Navigation & Controls Header */}
-        <Header tensionMode={tensionMode} setTensionMode={setTensionMode} />
 
-        {/* Dashboard Intro Hero Block */}
-        <section className="text-center max-w-3xl mx-auto py-4 px-6 flex flex-col gap-3">
-          <span className="text-[10px] font-mono text-amber-500 tracking-widest uppercase block">
-            Anthropic Culture Diagnostic Report
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white m-0">
-            Decoding Organizational DNA
-          </h2>
-          <p className="text-stone-400 text-xs sm:text-sm leading-relaxed m-0">
-            Trace the alignment culture at Anthropic PBC. Explore how visible design artifacts (like Claude's bookish aesthetics and splitting artifacts canvas) route back to espoused values and deep tacit assumptions.
-          </p>
-        </section>
+        {/* Finished hero — logo, headline, subtitle, CTAs */}
+        <Hero tensionMode={tensionMode} setTensionMode={setTensionMode} />
 
         {/* Component 01: Schein's Iceberg */}
-        <section className="flex flex-col gap-4">
+        <section id="dashboard-start" className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-stone-500">01 / Depth Stack</span>
             <span className="h-[1px] flex-grow bg-stone-900" />
@@ -66,7 +53,7 @@ function App() {
         </div>
 
         {/* Component 04: Qualitative Evidence Hub */}
-        <section className="flex flex-col gap-4">
+        <section id="methodology" className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-stone-500">04 / Raw Source Feed</span>
             <span className="h-[1px] flex-grow bg-stone-900" />
